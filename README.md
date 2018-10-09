@@ -3,6 +3,13 @@
 </p>
 
 <p align="center">
+
+[![GitHub issues](https://img.shields.io/github/issues/sarthaksavvy/laravel-packer.svg)](https://github.com/sarthaksavvy/laravel-packer/issues)
+[![Total Downloads](https://poser.pugx.org/bitfumes/laravel-packer/downloads)](https://packagist.org/packages/bitfumes/laravel-packer)
+[![GitHub forks](https://img.shields.io/github/forks/sarthaksavvy/laravel-packer.svg)](https://github.com/sarthaksavvy/laravel-packer/network)
+[![GitHub stars](https://img.shields.io/github/stars/sarthaksavvy/laravel-packer.svg)](https://github.com/sarthaksavvy/laravel-packer/stargazers)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/sarthaksavvy/laravel-packer.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fsarthaksavvy%2Flaravel-packer)
+
 </p>
 
 Laravel Packer was created by, and is maintained by [Sarthak Shrivastava](https://github.com/sarthaksavvy), and it is a Command Line Tool which is going to help you in creating package.
