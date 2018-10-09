@@ -30,20 +30,11 @@
             "Tests\\": "tests/"
         }
     },
+    "minimum-stability": "dev",
     "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true,
-        "platform": {
-            "ext-posix": "0"
+        "preferred-install": {
+            "*": "dist"
         }
     },
-    "scripts": {
-        "post-create-project-cmd": [
-            "@php application app:rename"
-        ]
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "bin": ["packer"]
+    "bin": ["builds/packer"]
 }
