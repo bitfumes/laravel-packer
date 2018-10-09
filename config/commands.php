@@ -76,6 +76,11 @@ return [
         App\Commands\TestDir\FeatureTest::class,
         App\Commands\TestDir\Testcase::class,
         App\Commands\TestDir\UnitTest::class,
+
+        App\Commands\Author::class,
+        App\Commands\Email::class,
+        App\Commands\Vendor::class,
+        App\Commands\Config::class,
     ],
 
     /*

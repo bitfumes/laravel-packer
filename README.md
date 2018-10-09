@@ -21,7 +21,7 @@ Laravel Packer was created by, and is maintained by [Sarthak Shrivastava](https:
 Install via composer.
 
 ```bash
-composer global require bitfumes/laravel-packer dev-master  --prefer-dist
+composer global require bitfumes/laravel-packer --prefer-dist
 ```
 
 ## Creating new Package Scaffolding
@@ -30,25 +30,11 @@ composer global require bitfumes/laravel-packer dev-master  --prefer-dist
 packer new your-package-name {vendor} {author} {author_email}
 ```
 
+![new](https://user-images.githubusercontent.com/41295276/46673797-38331580-cbf8-11e8-88e6-5d6b0dc18b93.gif)
+
 With the above command it will create package scaffoldig for you.
 
 Optional fields like 'vendor', 'author' and 'author_email' can also be given via command line interface if you are not willing to provide on command.
-
-## Set default values
-
-Another great feature is that you can set your default values for 'Vendor', 'author and 'author_email'
-
-```bash
-packer set:user author_name
-```
-
-```bash
-packar set:vendor vendor_name
-```
-
-```bash
-packar set:email author_name
-```
 
 ## Same as Artisan commands
 
@@ -59,5 +45,7 @@ You can create controller just like you do with `php artisan`
 ```bash
 packer make:controller controller_name
 ```
+
+![make](https://user-images.githubusercontent.com/41295276/46673800-38cbac00-cbf8-11e8-9a1b-c02e91da8563.gif)
 
 Explore all commands, just run `packer` on your command line.
