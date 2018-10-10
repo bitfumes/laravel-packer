@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use DummyNamespace\Tests\TestCase;
+use DummyRootNamespace\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

@@ -95,6 +95,11 @@ return [
     */
 
     'remove' => [
-        // ..
+        Illuminate\Database\Console\Migrations\FreshCommand::class,
+        Illuminate\Database\Console\Migrations\RefreshCommand::class,
+        Illuminate\Database\Console\Migrations\InstallCommand::class,
+        Illuminate\Database\Console\Migrations\ResetCommand::class,
+        Illuminate\Database\Console\Migrations\RollbackCommand::class,
+        Illuminate\Database\Console\Migrations\StatusCommand::class,
     ],
 ];
