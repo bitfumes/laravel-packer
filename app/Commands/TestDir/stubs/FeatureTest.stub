@@ -1,8 +1,8 @@
 <?php
 
-namespace ReplaceVendor\ReplacePackageName\Tests\Feature;
+namespace StudlyDummyVendor\StudlyDummyPackageName\Tests\Feature;
 
-use ReplaceVendor\ReplacePackageName\Tests\TestCase;
+use StudlyDummyVendor\StudlyDummyPackageName\Tests\TestCase;
 
 class ExampleTest extends TestCase
 {

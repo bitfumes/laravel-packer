@@ -1,12 +1,12 @@
 {
-    "name": "ReplaceVendor/ReplacePackageName",
+    "name": "KebabDummyVendor/KebabDummyPakageName",
     "description": "laravel package creator, laravel package generator",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "ReplaceAuthorName",
-            "email": "ReplaceAuthorEmail"
+            "name": "DummyAuthorName",
+            "email": "DummyAuthorEmail"
         }
     ],
     "minimum-stability": "dev",
@@ -21,18 +21,18 @@
     },
     "autoload": {
         "psr-4": {
-            "ReplaceVendor\\ReplacePackageName\\": "src/"
+            "StudlyDummyVendor\\StudlyDummyPackageName\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ReplaceVendor\\ReplacePackageName\\Tests\\":"tests/"
+            "StudlyDummyVendor\\StudlyDummyPackageName\\Tests\\":"tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "ReplaceVendor\\ReplacePackageName\\ReplacePackageNameServiceProvider"
+                "StudlyDummyVendor\\StudlyDummyPackageName\\StudlyDummyPackageNameServiceProvider"
             ]
         }
     }

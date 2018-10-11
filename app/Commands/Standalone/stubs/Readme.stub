@@ -1,11 +1,11 @@
-# ReplacePackageName
+# KebabDummyPakageName
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Travis](https://img.shields.io/travis/ReplaceVendor/ReplacePackageName.svg?style=flat-square)]()
-[![Total Downloads](https://img.shields.io/packagist/dt/ReplaceVendor/ReplacePackageName.svg?style=flat-square)](https://packagist.org/packages/ReplaceVendor/ReplacePackageName)
+[![Travis](https://img.shields.io/travis/KebabDummyVendor/KebabDummyPakageName.svg?style=flat-square)]()
+[![Total Downloads](https://img.shields.io/packagist/dt/KebabDummyVendor/KebabDummyPakageName.svg?style=flat-square)](https://packagist.org/packages/KebabDummyVendor/KebabDummyPakageName)
 
 ## Install
-`composer require ReplaceVendor/ReplacePackageName`
+`composer require KebabDummyVendor/KebabDummyPakageName`
 
 ## Usage
 Write a few lines about the usage of this package.

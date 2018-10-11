@@ -8,7 +8,7 @@ trait PackageDetail
 {
     protected function getComposer()
     {
-        $dev_path = app()->environment() == 'development' ? '/package/tester' : '';
+        $dev_path = app()->environment() == 'development' ? '/package/TesterApp' : '';
         $path = getcwd() . $dev_path . '/composer.json';
         return json_decode(file_get_contents($path));
     }

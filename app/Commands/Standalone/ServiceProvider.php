@@ -27,7 +27,7 @@ class ServiceProvider extends MakeFile
 
     public function getFilename()
     {
-        return ucfirst(cache()->get('package_name')) . 'ServiceProvider.php';
+        return studly_case(cache()->get('package_name')) . 'ServiceProvider.php';
     }
 
     public function getPath()

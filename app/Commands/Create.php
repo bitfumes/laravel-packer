@@ -109,7 +109,7 @@ class Create extends Command
                 $argument = $this->ask('Enter your vendor name');
             }
         }
-        Cache::forever('vendor', trim($argument));
+        Cache::forever('vendor', kebab_case($argument));
     }
 
     /**
@@ -121,7 +121,7 @@ class Create extends Command
         if (!$argument) {
             $argument = $this->ask('Enter your package name');
         }
-        Cache::forever('package_name', trim($argument));
+        Cache::forever('package_name', kebab_case($argument));
     }
 
     /**
@@ -131,7 +131,7 @@ class Create extends Command
     {
         $path = $this->argument('path') ? $this->argument('path') : getcwd();
         $path = app()->environment() == 'development' ? $path . '/package' : $path;
-        $package_name = cache()->get('package_name');
+        $package_name = studly_case(cache()->get('package_name'));
         Cache::forever('package_path', "{$path}/{$package_name}");
     }
 }

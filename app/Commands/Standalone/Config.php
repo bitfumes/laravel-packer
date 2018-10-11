@@ -28,7 +28,7 @@ class Config extends MakeFile
 
     public function getFilename()
     {
-        return cache()->get('package_name') . '.php';
+        return studly_case(cache()->get('package_name')) . '.php';
     }
 
     public function getPath()

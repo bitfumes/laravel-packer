@@ -1,8 +1,8 @@
 <?php
 
-namespace ReplaceVendor\ReplacePackageName\Tests\Unit;
+namespace StudlyDummyVendor\StudlyDummyPackageName\Tests\Unit;
 
-use ReplaceVendor\ReplacePackageName\Tests\TestCase;
+use StudlyDummyVendor\StudlyDummyPackageName\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase

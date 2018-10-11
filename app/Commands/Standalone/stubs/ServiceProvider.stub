@@ -1,10 +1,10 @@
 <?php
 
-namespace ReplaceVendor\ReplacePackageName;
+namespace StudlyDummyVendor\StudlyDummyPackageName;
 
 use Illuminate\Support\ServiceProvider;
 
-class ReplacePackageNameServiceProvider extends ServiceProvider
+class StudlyDummyPackageNameServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.

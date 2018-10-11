@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46138b092196b9065da848e81af70c42",
+    "content-hash": "c6e688029e2b80201deeba4c85d8e27c",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -60,6 +60,37 @@
                 "validation"
             ],
             "time": "2018-06-11T17:15:25+00:00"
+        },
+        {
+            "name": "container-interop/container-interop",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/container-interop/container-interop.git",
+                "reference": "79cbf1341c22ec75643d841642dd5d6acd83bdb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/container-interop/container-interop/zipball/79cbf1341c22ec75643d841642dd5d6acd83bdb8",
+                "reference": "79cbf1341c22ec75643d841642dd5d6acd83bdb8",
+                "shasum": ""
+            },
+            "require": {
+                "psr/container": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Interop\\Container\\": "src/Interop/Container/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
+            "homepage": "https://github.com/container-interop/container-interop",
+            "time": "2017-02-14T19:40:03+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -476,12 +507,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "1f4a0881ca0012732ae7b73809cf50ef8d964547"
+                "reference": "046ff884f3d5c17f0c8f28a94dece56c11f5ab86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/1f4a0881ca0012732ae7b73809cf50ef8d964547",
-                "reference": "1f4a0881ca0012732ae7b73809cf50ef8d964547",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/046ff884f3d5c17f0c8f28a94dece56c11f5ab86",
+                "reference": "046ff884f3d5c17f0c8f28a94dece56c11f5ab86",
                 "shasum": ""
             },
             "require": {
@@ -527,7 +558,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2018-10-06T18:48:42+00:00"
+            "time": "2018-10-10T20:19:53+00:00"
         },
         {
             "name": "illuminate/events",
@@ -580,12 +611,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "a09fae4470494dc9867609221b46fe844f2f3b70"
+                "reference": "e5af2cdd6848bea85ee458ffc0e670dbad29d03d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/a09fae4470494dc9867609221b46fe844f2f3b70",
-                "reference": "a09fae4470494dc9867609221b46fe844f2f3b70",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/e5af2cdd6848bea85ee458ffc0e670dbad29d03d",
+                "reference": "e5af2cdd6848bea85ee458ffc0e670dbad29d03d",
                 "shasum": ""
             },
             "require": {
@@ -624,7 +655,7 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
-            "time": "2018-08-14T19:42:44+00:00"
+            "time": "2018-10-10T12:52:25+00:00"
         },
         {
             "name": "illuminate/support",
@@ -632,12 +663,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "ea95697233b06650382eb0f5798be22b4e520dea"
+                "reference": "154d117788be71039757dfc05bd48f871fc613fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/ea95697233b06650382eb0f5798be22b4e520dea",
-                "reference": "ea95697233b06650382eb0f5798be22b4e520dea",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/154d117788be71039757dfc05bd48f871fc613fe",
+                "reference": "154d117788be71039757dfc05bd48f871fc613fe",
                 "shasum": ""
             },
             "require": {
@@ -683,7 +714,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2018-10-07T15:51:39+00:00"
+            "time": "2018-10-10T20:19:53+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -866,16 +897,16 @@
         },
         {
             "name": "laravel-zero/framework",
-            "version": "v5.7.5",
+            "version": "v5.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-zero/framework.git",
-                "reference": "e76163f43d963765b694832b7517e30428f93167"
+                "reference": "0052be8f055e89e8b2433c98e5f883886932559a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-zero/framework/zipball/e76163f43d963765b694832b7517e30428f93167",
-                "reference": "e76163f43d963765b694832b7517e30428f93167",
+                "url": "https://api.github.com/repos/laravel-zero/framework/zipball/0052be8f055e89e8b2433c98e5f883886932559a",
+                "reference": "0052be8f055e89e8b2433c98e5f883886932559a",
                 "shasum": ""
             },
             "require": {
@@ -909,7 +940,8 @@
                 "nunomaduro/laravel-console-dusk": "^1.0",
                 "phpstan/phpstan": "^0.10",
                 "phpunit/phpunit": "^7.3",
-                "vlucas/phpdotenv": "^2.4"
+                "vlucas/phpdotenv": "^2.4",
+                "zendframework/zend-text": "^2.7"
             },
             "type": "library",
             "autoload": {
@@ -936,7 +968,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-10-07T16:10:45+00:00"
+            "time": "2018-10-10T21:05:34+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1634,12 +1666,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "e0c9878432059f2c1cce8ebddb0f41271a9ee1ff"
+                "reference": "fd75f582baf17c1d4793608b94acb61e96cb61ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/e0c9878432059f2c1cce8ebddb0f41271a9ee1ff",
-                "reference": "e0c9878432059f2c1cce8ebddb0f41271a9ee1ff",
+                "url": "https://api.github.com/repos/symfony/console/zipball/fd75f582baf17c1d4793608b94acb61e96cb61ab",
+                "reference": "fd75f582baf17c1d4793608b94acb61e96cb61ab",
                 "shasum": ""
             },
             "require": {
@@ -1695,7 +1727,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-03T08:52:36+00:00"
+            "time": "2018-10-10T13:54:27+00:00"
         },
         {
             "name": "symfony/contracts",
@@ -1703,12 +1735,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "7e5e15779910215bb39b4288c479fb62eb42e894"
+                "reference": "df30ce9a7726feff039b5eaacffe5d48920d1f9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/7e5e15779910215bb39b4288c479fb62eb42e894",
-                "reference": "7e5e15779910215bb39b4288c479fb62eb42e894",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/df30ce9a7726feff039b5eaacffe5d48920d1f9f",
+                "reference": "df30ce9a7726feff039b5eaacffe5d48920d1f9f",
                 "shasum": ""
             },
             "require": {
@@ -1763,7 +1795,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2018-10-06T16:22:22+00:00"
+            "time": "2018-10-10T09:20:36+00:00"
         },
         {
             "name": "symfony/debug",
@@ -1827,12 +1859,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "d4a70c32d561ce1f75202af8b39d56825bc870bc"
+                "reference": "dbfc8530bf5f3fbeeba9f94bf8fc797364c6b61c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/d4a70c32d561ce1f75202af8b39d56825bc870bc",
-                "reference": "d4a70c32d561ce1f75202af8b39d56825bc870bc",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/dbfc8530bf5f3fbeeba9f94bf8fc797364c6b61c",
+                "reference": "dbfc8530bf5f3fbeeba9f94bf8fc797364c6b61c",
                 "shasum": ""
             },
             "require": {
@@ -1868,7 +1900,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-03T08:52:36+00:00"
+            "time": "2018-10-10T13:30:17+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1990,12 +2022,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "a867125524205460164c9ca95bc08199bb2da198"
+                "reference": "dbd4c71d833cba23cc70ca0ab2ab79048cbc82e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/a867125524205460164c9ca95bc08199bb2da198",
-                "reference": "a867125524205460164c9ca95bc08199bb2da198",
+                "url": "https://api.github.com/repos/symfony/process/zipball/dbd4c71d833cba23cc70ca0ab2ab79048cbc82e3",
+                "reference": "dbd4c71d833cba23cc70ca0ab2ab79048cbc82e3",
                 "shasum": ""
             },
             "require": {
@@ -2031,7 +2063,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-02T12:43:31+00:00"
+            "time": "2018-10-10T13:54:27+00:00"
         },
         {
             "name": "symfony/translation",
@@ -2039,12 +2071,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "805ed11f0712f714433772a0f505626842af0beb"
+                "reference": "cc69fc9208c085a5bcbd40bbc025f3b89b8b72c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/805ed11f0712f714433772a0f505626842af0beb",
-                "reference": "805ed11f0712f714433772a0f505626842af0beb",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/cc69fc9208c085a5bcbd40bbc025f3b89b8b72c3",
+                "reference": "cc69fc9208c085a5bcbd40bbc025f3b89b8b72c3",
                 "shasum": ""
             },
             "require": {
@@ -2104,7 +2136,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-06T16:22:22+00:00"
+            "time": "2018-10-10T19:30:04+00:00"
         },
         {
             "name": "symfony/var-dumper",
@@ -2112,12 +2144,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "a6f6fab49f9634a517a0d2fb6a1357004c9dc5e2"
+                "reference": "41bbde608ed03c87cc2da748442ca8d7d64d5c32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/a6f6fab49f9634a517a0d2fb6a1357004c9dc5e2",
-                "reference": "a6f6fab49f9634a517a0d2fb6a1357004c9dc5e2",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/41bbde608ed03c87cc2da748442ca8d7d64d5c32",
+                "reference": "41bbde608ed03c87cc2da748442ca8d7d64d5c32",
                 "shasum": ""
             },
             "require": {
@@ -2179,7 +2211,169 @@
                 "debug",
                 "dump"
             ],
-            "time": "2018-10-02T16:38:08+00:00"
+            "time": "2018-10-08T10:50:41+00:00"
+        },
+        {
+            "name": "zendframework/zend-servicemanager",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-servicemanager.git",
+                "reference": "0aea76faf40350852fd6570cb4c1eb60a18ac872"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-servicemanager/zipball/0aea76faf40350852fd6570cb4c1eb60a18ac872",
+                "reference": "0aea76faf40350852fd6570cb4c1eb60a18ac872",
+                "shasum": ""
+            },
+            "require": {
+                "container-interop/container-interop": "^1.2",
+                "php": "^5.6 || ^7.0",
+                "psr/container": "^1.0",
+                "zendframework/zend-stdlib": "^3.1"
+            },
+            "provide": {
+                "container-interop/container-interop-implementation": "^1.2",
+                "psr/container-implementation": "^1.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6.5",
+                "ocramius/proxy-manager": "^1.0 || ^2.0",
+                "phpbench/phpbench": "^0.13.0",
+                "phpunit/phpunit": "^5.7.25 || ^6.4.4",
+                "zendframework/zend-coding-standard": "~1.0.0"
+            },
+            "suggest": {
+                "ocramius/proxy-manager": "ProxyManager 1.* to handle lazy initialization of services",
+                "zendframework/zend-stdlib": "zend-stdlib ^2.5 if you wish to use the MergeReplaceKey or MergeRemoveKey features in Config instances"
+            },
+            "bin": [
+                "bin/generate-deps-for-config-factory",
+                "bin/generate-factory-for-class"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev",
+                    "dev-develop": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\ServiceManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Factory-Driven Dependency Injection Container",
+            "keywords": [
+                "PSR-11",
+                "ZendFramework",
+                "dependency-injection",
+                "di",
+                "dic",
+                "service-manager",
+                "servicemanager",
+                "zf"
+            ],
+            "time": "2018-02-26T16:15:29+00:00"
+        },
+        {
+            "name": "zendframework/zend-stdlib",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-stdlib.git",
+                "reference": "89a6fb821c11ba790ea2e123559ba1432596be39"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/89a6fb821c11ba790ea2e123559ba1432596be39",
+                "reference": "89a6fb821c11ba790ea2e123559ba1432596be39",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "phpbench/phpbench": "^0.13",
+                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2",
+                "zendframework/zend-coding-standard": "~1.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2.x-dev",
+                    "dev-develop": "3.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Stdlib\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "SPL extensions, array utilities, error handlers, and more",
+            "keywords": [
+                "ZendFramework",
+                "stdlib",
+                "zf"
+            ],
+            "time": "2018-08-29T10:55:46+00:00"
+        },
+        {
+            "name": "zendframework/zend-text",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-text.git",
+                "reference": "e24db3357cd848b5967e1d845a8d7fa4c971bf41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-text/zipball/e24db3357cd848b5967e1d845a8d7fa4c971bf41",
+                "reference": "e24db3357cd848b5967e1d845a8d7fa4c971bf41",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3",
+                "zendframework/zend-stdlib": "^2.7 || ^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.4",
+                "zendframework/zend-coding-standard": "~1.0.0",
+                "zendframework/zend-config": "^2.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7.x-dev",
+                    "dev-develop": "2.8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Text\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Create FIGlets and text-based tables",
+            "keywords": [
+                "ZendFramework",
+                "text",
+                "zf"
+            ],
+            "time": "2018-04-30T14:56:14+00:00"
         }
     ],
     "packages-dev": [
@@ -2974,12 +3168,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2e5304d8a5e54ef30da723de126d36992477c094"
+                "reference": "451700848676926491aaa646819f8cd367d172c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2e5304d8a5e54ef30da723de126d36992477c094",
-                "reference": "2e5304d8a5e54ef30da723de126d36992477c094",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/451700848676926491aaa646819f8cd367d172c0",
+                "reference": "451700848676926491aaa646819f8cd367d172c0",
                 "shasum": ""
             },
             "require": {
@@ -3050,7 +3244,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-10-10T04:55:27+00:00"
+            "time": "2018-10-11T12:01:49+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

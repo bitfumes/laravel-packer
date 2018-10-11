@@ -13,11 +13,6 @@ abstract class MakeFile extends Command
 
     abstract public function getPath();
 
-    public function upperCased()
-    {
-        return true;
-    }
-
     protected $filesystem;
 
     public function __construct(Filesystem $filesystem)
@@ -73,14 +68,29 @@ abstract class MakeFile extends Command
 
     protected function stringsToReplace()
     {
-        return ['ReplaceVendor', 'ReplacePackageName', 'ReplaceAuthorName', 'ReplaceAuthorEmail'];
+        return [
+            'LowerCaseDumyVendor',
+            'LowerCaseDummyPackageName',
+            'StudlyDummyVendor',
+            'StudlyDummyPackageName',
+            'KebabDummyVendor',
+            'KebabDummyPakageName',
+            'DummyAuthorName',
+            'DummyAuthorEmail'
+        ];
     }
 
     protected function replaceContent()
     {
+        $vendor = cache()->get('vendor');
+        $packageName = cache()->get('package_name');
         return [
-            $this->upperCased() ? ucfirst(cache()->get('vendor')) : cache()->get('vendor'),
-            $this->upperCased() ? ucfirst(cache()->get('package_name')) : cache()->get('package_name'),
+            strtolower($vendor),
+            strtolower($packageName),
+            studly_case($vendor),
+            studly_case($packageName),
+            $vendor,
+            $packageName,
             cache()->get('author_name'),
             cache()->get('author_email'),
         ];

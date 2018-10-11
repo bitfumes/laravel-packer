@@ -1,8 +1,8 @@
 <?php
 
-namespace ReplaceVendor\ReplacePackageName\Tests;
+namespace StudlyDummyVendor\StudlyDummyPackageName\Tests;
 
-use ReplaceVendor\ReplacePackageName\ReplacePackageNameServiceProvider;
+use StudlyDummyVendor\StudlyDummyPackageName\StudlyDummyPackageNameServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
@@ -29,6 +29,6 @@ class TestCase extends BaseTestCase
 
     protected function getPackageProviders($app)
     {
-        return [ReplacePackageNameServiceProvider::class];
+        return [StudlyDummyPackageNameServiceProvider::class];
     }
 }
