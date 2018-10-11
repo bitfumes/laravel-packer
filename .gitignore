@@ -5,3 +5,4 @@
 .editorconfig
 .DS_Store
 /package
+/composer.lock
