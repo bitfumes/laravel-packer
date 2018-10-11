@@ -4,15 +4,16 @@
 
 <p align="center">
 
-[![GitHub issues](https://img.shields.io/github/issues/sarthaksavvy/laravel-packer.svg)](https://github.com/sarthaksavvy/laravel-packer/issues)
+[![GitHub issues](https://img.shields.io/github/issues/bitfumes/laravel-packer.svg)](https://github.com/bitfumes/laravel-packer/issues)
+[![Latest Stable Version](https://poser.pugx.org/bitfumes/laravel-packer/v/stable)](https://packagist.org/packages/bitfumes/laravel-packer)
 [![Total Downloads](https://poser.pugx.org/bitfumes/laravel-packer/downloads)](https://packagist.org/packages/bitfumes/laravel-packer)
-[![GitHub forks](https://img.shields.io/github/forks/sarthaksavvy/laravel-packer.svg)](https://github.com/sarthaksavvy/laravel-packer/network)
-[![GitHub stars](https://img.shields.io/github/stars/sarthaksavvy/laravel-packer.svg)](https://github.com/sarthaksavvy/laravel-packer/stargazers)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/sarthaksavvy/laravel-packer.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fsarthaksavvy%2Flaravel-packer)
+[![GitHub stars](https://img.shields.io/github/stars/bitfumes/laravel-packer.svg)](https://github.com/bitfumes/laravel-packer/stargazers)
+[![License](https://poser.pugx.org/bitfumes/laravel-packer/license)](https://packagist.org/packages/bitfumes/laravel-packer)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/bitfumes/laravel-packer.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fsarthaksavvy%2Flaravel-packer)
 
 </p>
 
-Laravel Packer was created by, and is maintained by [Sarthak Shrivastava](https://github.com/sarthaksavvy), and it is a Command Line Tool which is going to help you in creating package.
+Laravel Packer was created by, and is maintained by [Sarthak Shrivastava](https://github.com/bitfumes), and it is a Command Line Tool which is going to help you in creating package.
 
 -   Built on with [Laravel-zero](http://laravel-zero.com).
 
@@ -49,3 +50,10 @@ packer make:controller controller_name
 ![make](https://user-images.githubusercontent.com/41295276/46673800-38cbac00-cbf8-11e8-9a1b-c02e91da8563.gif)
 
 Explore all commands, just run `packer` on your command line.
+
+_Now you can create Mirgations and Factories also_
+
+## License
+
+This package inherits the licensing of its parent framework, Laravel, and as such is open-sourced
+software licensed under the [MIT license](http://opensource.org/licenses/MIT)
