@@ -32,6 +32,7 @@
             "Tests\\": "tests/"
         }
     },
+    "prefer-stable": true,
     "minimum-stability": "dev",
     "config": {
         "preferred-install": "dist",
