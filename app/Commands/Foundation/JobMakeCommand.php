@@ -3,9 +3,11 @@
 namespace App\Commands\Foundation;
 
 use Illuminate\Foundation\Console\JobMakeCommand as JobMake;
+use App\Commands\Helpers\PackageDetail;
 
 class JobMakeCommand extends JobMake
 {
+    use PackageDetail;
     /**
      * The console command name.
      *

@@ -3,9 +3,11 @@
 namespace App\Commands\Foundation;
 
 use Illuminate\Foundation\Console\ExceptionMakeCommand as ExceptionMake;
+use App\Commands\Helpers\PackageDetail;
 
 class ExceptionMakeCommand extends ExceptionMake
 {
+    use PackageDetail;
     /**
      * The console command name.
      *
