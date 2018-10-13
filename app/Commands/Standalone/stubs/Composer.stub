@@ -1,6 +1,6 @@
 {
     "name": "KebabDummyVendor/KebabDummyPakageName",
-    "description": "laravel package creator, laravel package generator",
+    "description": "Your Package Description here",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,6 +10,7 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable":true,
     "require": {},
     "require-dev": {
         "phpunit/phpunit": "^7.4@dev",
