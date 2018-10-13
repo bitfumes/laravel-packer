@@ -108,7 +108,10 @@ class CloneCommand extends Command
     public function readType()
     {
         $content = $this->getComposerFile();
-        return $content->type;
+        if (isset($content->type)) {
+            return $content->type;
+        }
+        return;
     }
 
     protected function getComposerFile()

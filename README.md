@@ -53,6 +53,34 @@ Explore all commands, just run `packer` on your command line.
 
 _Now you can create Mirgations and Factories also_
 
+## Smart Clone
+
+With `packer clone` command you can do 3 steps in just one.
+
+```bash
+packer clone {repositoryname}
+```
+
+This not only clone repository but also install composer and if that repository type is project, then it will generate key for project also.
+
+#### Specify directory to clone
+
+Just like git, you can clone repository to any directory, just give `--dir=` option for above command
+
+```bash
+packer clone {repositoryname} --dir={custom_directory_name}
+```
+
+#### Specify branch to clone
+
+Just like git, you can clone any branch of given repository.
+
+```bash
+packer clone {repositoryname} --branch={branch_name}
+```
+
+![clone](https://user-images.githubusercontent.com/41295276/46906649-7eec7c80-cf24-11e8-9f18-7dd7fbfe1695.gif)
+
 ## License
 
 This package inherits the licensing of its parent framework, Laravel, and as such is open-sourced
