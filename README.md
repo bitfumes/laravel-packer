@@ -51,7 +51,7 @@ packer make:controller controller_name
 
 Explore all commands, just run `packer` on your command line.
 
-_Now you can create Mirgations and Factories also_
+_Now you can create Migrations and Factories also_
 
 ## Smart Clone
 
