@@ -20,8 +20,9 @@ class MigrationCreator extends RealMigrationCreator
     {
         $path = getcwd() . $this->devPath() . '/src/database/migrations';
         if (!$this->files->isDirectory($path)) {
-            $this->files->makeDirectory($path);
+            $this->files->makeDirectory($path, 0777, true);
         }
+
         return $path . '/' . $this->getDatePrefix() . '_' . $name . '.php';
     }
 }
