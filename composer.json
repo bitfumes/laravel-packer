@@ -39,7 +39,7 @@
         "sort-packages": true,
         "optimize-autoloader": true,
         "platform": {
-            "ext-posix": "0"
+            "ext-posix": "7.2"
         }
     },
     "scripts": {
