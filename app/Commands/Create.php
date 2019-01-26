@@ -59,6 +59,8 @@ class Create extends Command
         });
 
         $this->notify('Package Scaffolding is created !', 'Create something awesome with ' . cache()->get('package_name'), resource_path('icon.png'));
+
+        $this->initializeGit();
     }
 
     protected function setArguments()
@@ -129,9 +131,16 @@ class Create extends Command
      */
     protected function setPath()
     {
-        $path = $this->argument('path') ? $this->argument('path') : getcwd();
-        $path = app()->environment() == 'development' ? $path . '/package' : $path;
+        $path         = $this->argument('path') ? $this->argument('path') : getcwd();
+        $path         = app()->environment() == 'development' ? $path . '/package' : $path;
         $package_name = studly_case(cache()->get('package_name'));
         Cache::forever('package_path', "{$path}/{$package_name}");
+    }
+
+    protected function initializeGit()
+    {
+        $dir = (getcwd() . '/' . cache()->get('package_name'));
+        chdir("{$dir}");
+        $this->info(shell_exec('git init'));
     }
 }

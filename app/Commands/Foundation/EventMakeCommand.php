@@ -31,4 +31,15 @@ class EventMakeCommand extends EventMake
     {
         return __DIR__ . '/stubs/event.stub';
     }
+
+    /**
+     * Get the default namespace for the class.
+     *
+     * @param  string  $rootNamespace
+     * @return string
+     */
+    protected function getDefaultNamespace($rootNamespace)
+    {
+        return $rootNamespace . '\Events';
+    }
 }

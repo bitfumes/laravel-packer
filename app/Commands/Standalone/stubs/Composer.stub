@@ -36,5 +36,9 @@
                 "StudlyDummyVendor\\StudlyDummyPackageName\\StudlyDummyPackageNameServiceProvider"
             ]
         }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
     }
 }
