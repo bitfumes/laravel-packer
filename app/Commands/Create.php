@@ -41,6 +41,7 @@ class Create extends Command
             $this->callSilent('create:styleci');
             $this->callSilent('create:codecov');
             $this->callSilent('create:gitignore');
+            $this->callSilent('create:gitattributes');
             $this->callSilent('create:travis');
         });
 
@@ -139,8 +140,10 @@ class Create extends Command
 
     protected function initializeGit()
     {
-        $dir = (getcwd() . '/' . cache()->get('package_name'));
-        chdir("{$dir}");
+        $path         = $this->argument('path') ? $this->argument('path') : getcwd();
+        $path         = app()->environment() == 'development' ? $path . '/package' : $path;
+        $package_name = studly_case(cache()->get('package_name'));
+        chdir("{$path}/{$package_name}");
         $this->info(shell_exec('git init'));
     }
 }

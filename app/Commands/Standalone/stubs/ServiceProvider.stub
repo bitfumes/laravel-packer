@@ -13,7 +13,12 @@ class StudlyDummyPackageNameServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /*
+         * Optional methods to load your package assets
+         */
+        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'StudlyDummyPackageName');
+        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        // $this->loadRoutesFrom(__DIR__.'/routes.php');
     }
 
     /**
