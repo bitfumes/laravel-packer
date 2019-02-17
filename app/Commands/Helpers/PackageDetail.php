@@ -8,8 +8,8 @@ trait PackageDetail
 {
     protected function getComposer()
     {
-        $dev_path = app()->environment() == 'development' ? '/package/TesterApp' : '';
-        $path = getcwd() . $dev_path . '/composer.json';
+        $dev_path = app()->environment() == 'development' ? '/package/TestApp' : '';
+        $path     = getcwd() . $dev_path . '/composer.json';
         return json_decode(file_get_contents($path));
     }
 
@@ -19,7 +19,7 @@ trait PackageDetail
             return cache()->get('namespaceFromComposer');
         }
         $content = $this->getComposer();
-        $psr = 'psr-4';
+        $psr     = 'psr-4';
         cache()->forever('namespaceFromComposer', key($content->autoload->$psr));
         return key($content->autoload->$psr);
     }

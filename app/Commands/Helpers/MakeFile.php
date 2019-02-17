@@ -58,9 +58,9 @@ abstract class MakeFile extends Command
     {
         $content = $this->getContent();
         $content = str_replace(
-                $this->stringsToReplace(),
-                $this->replaceContent(),
-                $content
+            $this->stringsToReplace(),
+            $this->replaceContent(),
+            $content
             );
 
         return $content;
@@ -76,13 +76,14 @@ abstract class MakeFile extends Command
             'KebabDummyVendor',
             'KebabDummyPakageName',
             'DummyAuthorName',
-            'DummyAuthorEmail'
+            'DummyAuthorEmail',
+            'DummyFileName'
         ];
     }
 
     protected function replaceContent()
     {
-        $vendor = cache()->get('vendor');
+        $vendor      = cache()->get('vendor');
         $packageName = cache()->get('package_name');
         return [
             strtolower($vendor),
@@ -93,6 +94,7 @@ abstract class MakeFile extends Command
             $packageName,
             cache()->get('author_name'),
             cache()->get('author_email'),
+            $this->hasArgument('filename') ? $this->argument('filename') : false
         ];
     }
 }
