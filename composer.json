@@ -45,5 +45,5 @@
             "@php application app:rename"
         ]
     },
-    "bin": ["packer"]
+    "bin": ["builds/packer"]
 }
