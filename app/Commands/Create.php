@@ -43,6 +43,7 @@ class Create extends Command
             $this->callSilent('create:gitignore');
             $this->callSilent('create:gitattributes');
             $this->callSilent('create:travis');
+            $this->callSilent('create:facade');
         });
 
         $this->task('Creating Service Provider for package', function () {

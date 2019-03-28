@@ -13,9 +13,8 @@ class StudlyDummyPackageNameServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
+        $this->mergeConfigFrom(__DIR__ . '/../config/StudlyDummyPackageName.php', 'KebabDummyPakageName');
+        $this->publishThings();
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'StudlyDummyPackageName');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
@@ -28,6 +27,17 @@ class StudlyDummyPackageNameServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Register facade
+        $this->app->singleton('KebabDummyPakageName', function () {
+            return new StudlyDummyPackageName;
+        });
+    }
+
+    public function publicThings(){
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/StudlyDummyPackageName.php' => config_path('StudlyDummyPackageName.php'),
+            ], 'config');
+        }
     }
 }

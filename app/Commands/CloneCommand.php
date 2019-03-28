@@ -19,8 +19,8 @@ class CloneCommand extends Command
      */
     protected $signature = 'clone 
                             {repository : The repository url you want to clone} 
-                            {--branch= : Specify branch you want to clone, default is master} 
-                            {--dir= : Specify directory name to which you want to clone the repository}';
+                            {dir? : Specify directory name to which you want to clone the repository}
+                            {--B|branch= : Specify branch you want to clone, default is master}';
 
     /**
      * The description of the command.
@@ -42,17 +42,15 @@ class CloneCommand extends Command
 
         $this->installComposer();
 
-        if (strtolower($this->readType()) == 'project') {
-            $this->keyGenerate();
-        }
+        $this->installNpm();
     }
 
     public function setAttributes()
     {
-        $this->repo = $this->argument('repository');
+        $this->repo   = $this->argument('repository');
         $this->branch = $this->option('branch');
-        $dir = $this->option('dir') ? $this->option('dir') : $this->getRepoName($this->repo);
-        $this->dir = getcwd() . '/' . $dir;
+        $dir          = $this->argument('dir') ? $this->argument('dir') : $this->getRepoName($this->repo);
+        $this->dir    = getcwd() . '/' . $dir;
     }
 
     public function cloneRepo()
@@ -69,12 +67,18 @@ class CloneCommand extends Command
 
     public function installComposer()
     {
-        $this->info('Installing Composer...');
-        $composer = $this->findComposer();
-        $command = $composer . ' install';
-        chdir("{$this->dir}");
+        if (file_exists($this->dir . '/composer.json')) {
+            $this->info('Installing Composer...');
+            $composer = $this->findComposer();
+            $command  = $composer . ' install';
+            chdir("{$this->dir}");
 
-        $this->info(shell_exec($command));
+            $this->info(shell_exec($command));
+
+            if (strtolower($this->readType()) == 'project') {
+                $this->keyGenerate();
+            }
+        }
     }
 
     public function keyGenerate()
@@ -118,5 +122,15 @@ class CloneCommand extends Command
     {
         $path = $this->dir . '/composer.json';
         return json_decode(file_get_contents($path));
+    }
+
+    protected function installNpm()
+    {
+        if (file_exists($this->dir . '/package.json') || file_exists($this->dir . '/yarn.json')) {
+            if ($this->confirm('Do you want to install npm')) {
+                chdir("{$this->dir}");
+                $this->info(shell_exec('npm install'));
+            }
+        }
     }
 }

@@ -73,6 +73,7 @@ return [
         App\Commands\Standalone\ServiceProvider::class,
         App\Commands\Standalone\StyleCI::class,
         App\Commands\Standalone\Travis::class,
+        App\Commands\Standalone\Facade::class,
 
         App\Commands\TestDir\FeatureTest::class,
         App\Commands\TestDir\Testcase::class,
