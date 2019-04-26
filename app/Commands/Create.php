@@ -60,8 +60,6 @@ class Create extends Command
             $this->callSilent('create:config');
         });
 
-        $this->notify('Package Scaffolding is created !', 'Create something awesome with ' . cache()->get('package_name'), resource_path('icon.png'));
-
         $this->initializeGit();
     }
 

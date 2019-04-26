@@ -21,6 +21,8 @@ Laravel Packer was created by, and is maintained by [Sarthak](https://github.com
 
 Install via composer.
 
+Note: For windows user, first run `composer global update`
+
 ```bash
 composer global require bitfumes/laravel-packer
 ```

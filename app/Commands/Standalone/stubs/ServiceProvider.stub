@@ -33,7 +33,7 @@ class StudlyDummyPackageNameServiceProvider extends ServiceProvider
         });
     }
 
-    public function publicThings(){
+    public function publishThings(){
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/StudlyDummyPackageName.php' => config_path('StudlyDummyPackageName.php'),
