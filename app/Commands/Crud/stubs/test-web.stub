@@ -1,0 +1,57 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyFullModelClass;
+use DummyRootNamespace\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
+class DummyClass extends TestCase
+{
+    use DatabaseMigrations;
+
+    public function create_DummyModelName($args = [], $num = null)
+    {
+        return factory(DummyModelClass::class, $num)->create($args);
+    }
+
+    /** @test */
+    public function user_can_create_DummyModelName()
+    {
+        $DummyModelName = factory(DummyModelClass::class)->make();
+        $this->post(route('DummyModelName.store'), $DummyModelName->toArray())
+            ->assertRedirect(route('DummyModelName.index'))
+            ->assertSessionHas(['message']);
+        $this->assertDatabaseHas('DummyPluralModelName', ['DummyModelFieldName' => $DummyPluralModelNameDummyModelFieldName]);
+    }
+
+    /** @test */
+    public function user_can_update_DummyModelName()
+    {
+        $DummyModelName = $this->create_DummyModelName(['DummyModelFieldName' => 'beforeUpdatedValue']);
+        $this->patch(route('DummyModelName.update', $DummyModelName->id), ['DummyModelFieldName' => 'updatedValue])
+            ->assertRedirect(route('DummyModelName.index'))
+            ->assertSessionHas(['message']);
+        $this->assertDatabaseHas('DummyPluralModelName', ['DummyModelFieldName' => 'updatedValue']);
+    }
+
+    /** @test */
+    public function user_can_delete_DummyModelName()
+    {
+        $DummyModelName = $this->createReport(['DummyModelFieldName' => 'anyValue']);
+        $this->delete(route('DummyModelName.destroy', $DummyModelName->id))
+            >assertRedirect(route('DummyModelName.index'))
+            ->assertSessionHas(['message']);
+        $this->assertDatabaseMissing('DummyPluralModelName', ['DummyModelFieldName' => 'anyValue']);
+    }
+
+    /** @test */
+    public function logged_in_user_can_visit_edit_report_page_and_see_edit_form()
+    {
+        $user = $this->authUser();
+        $DummyPluralModelName = $this->createReport(['DummyModelFieldName' => $user->id, 'DummyModelFieldName' => $userDummyModelFieldName]);
+        $this->get(route('DummyModelName.edit', $DummyPluralModelName->id))
+            ->assertOk()
+            ->assertSee('Edit Report');
+    }
+}

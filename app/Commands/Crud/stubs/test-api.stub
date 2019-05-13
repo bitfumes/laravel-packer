@@ -1,0 +1,57 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyFullModelClass;
+use DummyRootNamespace\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
+class DummyClass extends TestCase
+{
+    use DatabaseMigrations;
+
+    public function create_DummyModelName($args = [], $num = null)
+    {
+        return factory(DummyModelClass::class, $num)->create($args);
+    }
+
+    /** @test */
+    public function api_can_give_all_DummyModelName()
+    {
+        $this->create_DummyModelName();
+        $this->getJson(route('DummyModelName.index'))->assertOk()->assertJsonStructure(['data']);;
+    }
+
+    /** @test */
+    public function api_can_give_single_DummyModelName()
+    {
+        $DummyModelName = $this->create_DummyModelName();
+        $this->getJson(route('DummyModelName.show', $DummyModelName->id))->assertJsonStructure(['data']);
+    }
+
+    /** @test */
+    public function api_can_store_new_DummyModelName()
+    {
+        $DummyModelName = factory(DummyModelClass::class)->make(['DummyModelFieldName'=>'Laravel']);
+        $this->postJson(route('DummyModelName.store'), $DummyModelName->toArray())
+        ->assertStatus(201);
+        $this->assertDatabaseHas('DummyPluralModelName', ['DummyModelFieldName'=>'Laravel']);
+    }
+
+    /** @test */
+    public function api_can_update_DummyModelName()
+    {
+        $DummyModelName = $this->create_DummyModelName();
+        $this->putJson(route('DummyModelName.update', $DummyModelName->id), ['DummyModelFieldName'=>'UpdatedValue'])
+        ->assertStatus(202);
+        $this->assertDatabaseHas('DummyPluralModelName', ['DummyModelFieldName'=>'UpdatedValue']);
+    }
+
+    /** @test */
+    public function api_can_delete_DummyModelName()
+    {
+        $DummyModelName = $this->create_DummyModelName();
+        $this->deleteJson(route('DummyModelName.destroy', $DummyModelName->id))->assertStatus(204);
+        $this->assertDatabaseMissing('DummyPluralModelName', ['DummyModelFieldName'=>$DummyModelName->DummyModelFieldName]);
+    }
+}
