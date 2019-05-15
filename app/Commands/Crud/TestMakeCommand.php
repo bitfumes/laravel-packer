@@ -38,14 +38,14 @@ class TestMakeCommand extends GeneratorCommand
     protected function getStub()
     {
         if ($this->option('unit')) {
-            return __DIR__ . '/stubs/unit-test.stub';
+            return __DIR__ . '/stubs/tests/unit-test.stub';
         }
 
         if (cache()->get('structure')->type == 'api') {
-            return __DIR__ . '/stubs/test-api.stub';
+            return __DIR__ . '/stubs/tests/test-api.stub';
+        } else if (cache()->get('structure')->type == 'web') {
+            return __DIR__ . '/stubs/tests/test-web.stub';
         }
-
-        return __DIR__ . '/stubs/test-web.stub';
     }
 
     /**

@@ -1,0 +1,53 @@
+@extends('DummyPackageName::layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                @include('DummyPackageName::layouts.flash')
+                <div class="card-header">
+                    DummyModelName
+                    <a class="btn btn-info btn-sm float-right"
+                        href="{{ route('DummyModelLower.create') }}">Create</a>
+                </div>
+
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>S No</th>
+                                //FIELDS_TH
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($DummyModelPlural as $DummyModelLower)
+                            <tr>
+                                <td>{{ $loop->index+1 }}</td>
+                                //VALUES_TD
+                                <td>
+                                    <a class="btn btn-warning btn-sm"
+                                        href="{{ route('DummyModelLower.edit',$DummyModelLower->id) }}">Edit</a>
+                                    <a class="btn btn-danger btn-sm float-right" onClick="
+                                    event.preventDefault();
+                                    if(confirm('Do you really want to delete>')){
+                                        document.getElementById('form-{{ $DummyModelLower->id }}').submit()
+                                    }">Delete</a>
+
+                                    <form action="{{ route('DummyModelLower.destroy',$DummyModelLower->id) }}" method="post"
+                                        id="form-{{ $DummyModelLower->id }}">
+                                        @csrf
+                                        @method('delete')
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

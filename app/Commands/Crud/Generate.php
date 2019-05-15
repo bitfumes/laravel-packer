@@ -31,7 +31,7 @@ class Generate extends Command
     public function handle()
     {
         $model = $this->argument('model');
-        $structure = json_decode(file_get_contents('crud.json'));
+        $structure = json_decode(file_get_contents($this->argument('file')));
 
         Cache::forever('structure', $structure);
         $this->callSilent("crud:model", [
@@ -45,5 +45,11 @@ class Generate extends Command
             'name' => "{$model}Test",
             "--model" => $model
         ]);
+
+        if ($structure->type == 'web') {
+            $this->callSilent("crud:views", [
+                'name' => $model
+            ]);
+        }
     }
 }

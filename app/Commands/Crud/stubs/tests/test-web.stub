@@ -1,0 +1,80 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyFullModelClass;
+use DummyRootNamespace\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
+class DummyClass extends TestCase
+{
+    use DatabaseMigrations;
+
+    public function create_DummyModelName($args = [], $num = null)
+    {
+        return factory(DummyModelClass::class, $num)->create($args);
+    }
+
+    /** @test */
+    public function user_can_get_all_DummyModelName()
+    {
+        $DummyModelName = $this->create_DummyModelName();
+        $this->get(route('DummyModelName.index'))
+            ->assertOk()
+            ->assertSee($DummyModelName->DummyModelFieldName);
+    }
+    
+    /** @test */
+    public function user_can_see_create_page_of_DummyModelName()
+    {
+        $this->get(route('DummyModelName.create'))
+            ->assertOk()
+            ->assertSee('Create DummyModelClass');
+    }
+
+    /** @test */
+    public function user_can_store_new_DummyModelName()
+    {
+        $DummyModelName = factory(DummyModelClass::class)->make(['DummyModelFieldName'=>'Laravel']);
+        $this->post(route('DummyModelName.store'), $DummyModelName->toArray())
+        ->assertRedirect(route('DummyModelName.index'))
+        ->assertSessionHas(['message']);
+        $this->assertDatabaseHas('DummyPluralModelName', ['DummyModelFieldName'=>'Laravel']);
+    }
+
+    /** @test */
+    public function user_can_see_single_DummyModelName()
+    {
+        $DummyModelName = $this->create_DummyModelName();
+        $this->get(route('DummyModelName.show', $DummyModelName->id))
+        ->assertSee($DummyModelName->DummyModelFieldName);
+    }
+    
+    /** @test */
+    public function user_can_visit_DummyModelName_update_page()
+    {
+        $DummyModelName = $this->create_DummyModelName();
+        $this->get(route('DummyModelName.edit', $DummyModelName->id))
+        ->assertSee('Edit DummyModelClass');
+    }
+
+    /** @test */
+    public function user_can_update_DummyModelName()
+    {
+        $DummyModelName = $this->create_DummyModelName();
+        $this->put(route('DummyModelName.update', $DummyModelName->id), ['DummyModelFieldName'=>'UpdatedValue'])
+        ->assertRedirect(route('DummyModelName.index'))
+        ->assertSessionHas(['message']);
+        $this->assertDatabaseHas('DummyPluralModelName', ['DummyModelFieldName'=>'UpdatedValue']);
+    }
+
+    /** @test */
+    public function user_can_delete_DummyModelName()
+    {
+        $DummyModelName = $this->create_DummyModelName();
+        $this->delete(route('DummyModelName.destroy', $DummyModelName->id))->assertStatus(302)
+        ->assertRedirect(route('DummyModelName.index'))
+        ->assertSessionHas(['message']);
+        $this->assertDatabaseMissing('DummyPluralModelName',['DummyModelFieldName'=>$DummyModelName->DummyModelFieldName]);
+    }
+}

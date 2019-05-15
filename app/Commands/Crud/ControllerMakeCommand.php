@@ -41,9 +41,9 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         $stub = null;
         if (cache()->get('structure')->type == 'api') {
-            $stub = '/stubs/controllerApi.stub';
-        } else {
-            $stub = '/stubs/controllerApiSimple.stub';
+            $stub = '/stubs/controllers/controllerApi.stub';
+        } else if (cache()->get('structure')->type == 'web') {
+            $stub = '/stubs/controllers/controllerWeb.stub';
         }
 
 
@@ -128,8 +128,14 @@ class ControllerMakeCommand extends GeneratorCommand
         return [
             'ParentDummyFullModelClass' => $parentModelClass,
             'ParentDummyModelClass'     => class_basename($parentModelClass),
-            'ParentDummyModelVariable'  => lcfirst(class_basename($parentModelClass)),
+            'ParentDummyModelVariable'  => lcfirst(class_basename($parentModelClass))
         ];
+    }
+
+    public function replaceLayout()
+    {
+        $content = $this->getComposer();
+        return $content->type == 'library' ? strtolower($this->getPackageName()) . '::' : '';
     }
 
     /**
@@ -150,8 +156,10 @@ class ControllerMakeCommand extends GeneratorCommand
 
         return array_merge($replace, [
             'DummyFullModelClass' => $modelClass,
+            'DummyPackageName::' => $this->replaceLayout(),
             'DummyModelClass'     => class_basename($modelClass),
             'DummyModelVariable'  => lcfirst(class_basename($modelClass)),
+            'DummyModelPluralVariable'  => Str::plural(lcfirst(class_basename($modelClass)))
         ]);
     }
 

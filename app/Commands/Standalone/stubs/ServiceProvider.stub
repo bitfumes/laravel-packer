@@ -3,6 +3,7 @@
 namespace StudlyDummyVendor\StudlyDummyPackageName;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class StudlyDummyPackageNameServiceProvider extends ServiceProvider
 {
@@ -17,7 +18,33 @@ class StudlyDummyPackageNameServiceProvider extends ServiceProvider
         $this->publishThings();
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'StudlyDummyPackageName');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        // $this->registerRoutes();
+    }
+
+    /**
+     * Register the package routes.
+     *
+     * @return void
+     */
+    private function registerRoutes()
+    {
+        Route::group($this->routeConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__ . '/Http/routes.php');
+        });
+    }
+
+    /**
+    * Get the Blogg route group configuration array.
+    *
+    * @return array
+    */
+    private function routeConfiguration()
+    {
+        return [
+            'namespace'  => "StudlyDummyVendor\StudlyDummyPackageName\Http\Controllers",
+            'middleware' => 'api',
+            'prefix'     => 'api'
+        ];
     }
 
     /**

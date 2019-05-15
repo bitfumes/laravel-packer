@@ -1,0 +1,13 @@
+<div class="form-group row">
+                            <label for="DummyModelVariable" class="col-md-4 col-form-label text-md-right">DummyModelCapitalVariable</label>
+
+                            <div class="col-md-6">
+                                <input id="DummyModelVariable" type="text" class="form-control @error('DummyModelVariable') is-invalid @enderror" name="DummyModelVariable" required autocomplete="DummyModelVariable" value={{old('DummyModelVariable')}}>
+
+                                @error('DummyModelVariable')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>

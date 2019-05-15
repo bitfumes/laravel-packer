@@ -1,5 +1,5 @@
 {
-    "type": "api",
+    "type": "web",
     "fields": [{
             "name": "title",
             "type": "string"

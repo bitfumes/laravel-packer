@@ -79,6 +79,8 @@ return [
         App\Commands\TestDir\Testcase::class,
         App\Commands\TestDir\UnitTest::class,
 
+        // App\Commands\Crud\RouteMakeCommand::class,
+
         App\Commands\Author::class,
         App\Commands\Email::class,
         App\Commands\Vendor::class,
