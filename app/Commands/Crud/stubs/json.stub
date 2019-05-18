@@ -1,0 +1,18 @@
+{
+    "type": "web",
+    "fields": [{
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "body",
+            "type": "text"
+        }
+    ],
+    "relationships": [{
+            "name": "user",
+            "type": "belongsTo",
+            "model": "User"
+        }
+    ]
+}

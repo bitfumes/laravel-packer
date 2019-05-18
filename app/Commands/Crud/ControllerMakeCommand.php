@@ -41,29 +41,10 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         $stub = null;
         if (cache()->get('structure')->type == 'api') {
-            $stub = '/stubs/controllers/controllerApi.stub';
-        } else if (cache()->get('structure')->type == 'web') {
-            $stub = '/stubs/controllers/controllerWeb.stub';
+            $stub = '/stubs/controllers/ControllerApi.stub';
+        } elseif (cache()->get('structure')->type == 'web') {
+            $stub = '/stubs/controllers/ControllerWeb.stub';
         }
-
-
-        // if ($this->option('parent')) {
-        //     $stub = '/stubs/controller.nested.stub';
-        // } elseif ($this->option('model')) {
-        //     $stub = '/stubs/controller.model.stub';
-        // } elseif ($this->option('invokable')) {
-        //     $stub = '/stubs/controller.invokable.stub';
-        // } elseif ($this->option('resource')) {
-        //     $stub = '/stubs/controller.stub';
-        // }
-
-        // if ($this->option('api') && is_null($stub)) {
-        //     $stub = '/stubs/controller.api.stub';
-        // } elseif ($this->option('api') && !is_null($stub) && !$this->option('invokable')) {
-        //     $stub = str_replace('.stub', '.api.stub', $stub);
-        // }
-
-        // $stub = $stub ?? '/stubs/controller.plain.stub';
 
         return __DIR__ . $stub;
     }
@@ -155,10 +136,10 @@ class ControllerMakeCommand extends GeneratorCommand
         // }
 
         return array_merge($replace, [
-            'DummyFullModelClass' => $modelClass,
-            'DummyPackageName::' => $this->replaceLayout(),
-            'DummyModelClass'     => class_basename($modelClass),
-            'DummyModelVariable'  => lcfirst(class_basename($modelClass)),
+            'DummyFullModelClass'       => $modelClass,
+            'DummyPackageName::'        => $this->replaceLayout(),
+            'DummyModelClass'           => class_basename($modelClass),
+            'DummyModelVariable'        => lcfirst(class_basename($modelClass)),
             'DummyModelPluralVariable'  => Str::plural(lcfirst(class_basename($modelClass)))
         ]);
     }

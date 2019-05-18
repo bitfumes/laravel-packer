@@ -19,7 +19,7 @@ class DummyClass extends TestCase
     public function api_can_give_all_DummyModelName()
     {
         $this->create_DummyModelName();
-        $this->getJson(route('DummyModelName.index'))->assertOk()->assertJsonStructure(['data']);;
+        $this->getJson(route('DummyModelName.index'))->assertOk()->assertJsonStructure(['data']);
     }
 
     /** @test */

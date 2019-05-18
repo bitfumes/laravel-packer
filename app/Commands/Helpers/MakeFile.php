@@ -91,7 +91,7 @@ abstract class MakeFile extends Command
             studly_case($vendor),
             studly_case($packageName),
             $vendor,
-            $packageName,
+            kebab_case($packageName),
             cache()->get('author_name'),
             cache()->get('author_email'),
             $this->hasArgument('filename') ? $this->argument('filename') : false

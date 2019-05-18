@@ -123,7 +123,7 @@ class Create extends Command
         if (!$argument) {
             $argument = $this->ask('Enter your package name');
         }
-        Cache::forever('package_name', kebab_case($argument));
+        Cache::forever('package_name', $argument);
     }
 
     /**

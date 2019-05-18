@@ -14,9 +14,9 @@ class StudlyDummyPackageNameServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/StudlyDummyPackageName.php', 'KebabDummyPakageName');
+        $this->mergeConfigFrom(__DIR__ . '/../config/StudlyDummyPackageName.php', 'LowerCaseDummyPackageName');
         $this->publishThings();
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'StudlyDummyPackageName');
+        // $this->loadViewsFrom(__DIR__.'/resources/views', 'LowerCaseDummyPackageName');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->registerRoutes();
     }
@@ -55,7 +55,7 @@ class StudlyDummyPackageNameServiceProvider extends ServiceProvider
     public function register()
     {
         // Register facade
-        $this->app->singleton('KebabDummyPakageName', function () {
+        $this->app->singleton('LowerCaseDummyPackageName', function () {
             return new StudlyDummyPackageName;
         });
     }

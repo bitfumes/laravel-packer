@@ -10,9 +10,7 @@
                 </div>
 
                 <div class="card-body">
-                    @foreach($DummyModelPlural as $DummyModelLower)
-                    //ShowFileds
-                    @endforeach
+                    // to be done
                 </div>
             </div>
         </div>

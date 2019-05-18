@@ -92,7 +92,7 @@ class ModelMakeCommand extends GeneratorCommand
         $factory = Str::studly(class_basename($this->argument('name')));
 
         $this->call('crud:factory', [
-            'name' => "{$factory}Factory",
+            'name'    => "{$factory}Factory",
             '--model' => $this->qualifyClass($this->getNameInput()),
         ]);
     }
@@ -111,7 +111,7 @@ class ModelMakeCommand extends GeneratorCommand
         }
 
         $this->call('crud:migration', [
-            'name' => "create_{$table}_table",
+            'name'     => "create_{$table}_table",
             '--create' => $table,
         ]);
     }
@@ -128,7 +128,7 @@ class ModelMakeCommand extends GeneratorCommand
         $modelName = $this->qualifyClass($this->getNameInput());
 
         $this->call('crud:controller', [
-            'name' => "{$controller}Controller",
+            'name'    => "{$controller}Controller",
             '--model' => $this->option('resource') ? $modelName : null,
         ]);
     }
@@ -149,7 +149,7 @@ class ModelMakeCommand extends GeneratorCommand
 
     protected function addMoreTo($stub)
     {
-        $attr = '';
+        $attr      = '';
         $structure = cache()->get('structure');
         foreach ($structure->fields as $field) {
             $attr .= "'$field->name', ";
@@ -158,19 +158,23 @@ class ModelMakeCommand extends GeneratorCommand
 
         if (isset($structure->relationships)) {
             $fillable = $this->addRelationship($fillable, $structure->relationships);
+            $this->callSilent('crud:test', [
+                'name'     => $this->getNameInput() . 'Test',
+                '--model'  => $this->getNameInput(),
+                '--unit'   => true,
+            ]);
         }
         return  str_replace('//', $fillable, $stub);
     }
 
     protected function addRelationship($fillable, $relationships)
     {
-        $namespace = $this->rootNamespace();
         $rel = '';
         foreach ($relationships as $relationship) {
             $rel .= '
     public function ' . $relationship->name . '()
     {
-        return $this->' . $relationship->type . '(' . $namespace  . '' . $relationship->model . '::class);
+        return $this->' . $relationship->type . '(' . $relationship->model . '::class);
     }
         ';
         }

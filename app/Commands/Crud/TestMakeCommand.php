@@ -43,7 +43,7 @@ class TestMakeCommand extends GeneratorCommand
 
         if (cache()->get('structure')->type == 'api') {
             return __DIR__ . '/stubs/tests/test-api.stub';
-        } else if (cache()->get('structure')->type == 'web') {
+        } elseif (cache()->get('structure')->type == 'web') {
             return __DIR__ . '/stubs/tests/test-web.stub';
         }
     }
@@ -60,9 +60,9 @@ class TestMakeCommand extends GeneratorCommand
 
     public function getPath($name)
     {
-        $name = Str::replaceFirst($this->rootNamespace(), '', $name);
+        $name     = Str::replaceFirst($this->rootNamespace(), '', $name);
         $dev_path = (app()->environment() == 'development') ? '/package/' . $this->getPackageName() : '';
-        $path = getcwd() . $dev_path . '/tests/';
+        $path     = getcwd() . $dev_path . '/tests/';
         return $path . str_replace('\\', '/', $name) . '.php';
     }
 
@@ -91,7 +91,7 @@ class TestMakeCommand extends GeneratorCommand
     protected function replaceNamespace(&$stub, $name)
     {
         $model = $this->option('model');
-        $stub = str_replace(
+        $stub  = str_replace(
             [
                 'DummyModelName',
                 'DummyModelClass',
@@ -101,6 +101,7 @@ class TestMakeCommand extends GeneratorCommand
                 'DummyModelFieldName',
                 'DummyPluralModelName',
                 'NamespacedDummyUserModel',
+                '//Relationships'
             ],
             [
                 strtolower($model),
@@ -110,11 +111,43 @@ class TestMakeCommand extends GeneratorCommand
                 $this->namespaceFromComposer() . '' . $model,
                 cache()->get('structure')->fields[0]->name,
                 Str::plural($model),
-                $this->userProviderModel()
+                $this->userProviderModel(),
+                $this->createRelationships()
             ],
             $stub
         );
 
         return $this;
+    }
+
+    public function createRelationships()
+    {
+        $structure = cache()->get('structure');
+        $rel       = '';
+        if (isset($structure->relationships)) {
+            foreach ($structure->relationships as $relationship) {
+                if ($relationship->type == 'belongsTo') {
+                    $relStub = file_get_contents(__DIR__ . '/stubs/tests/belongsTo.stub');
+                }
+                $rel .= str_replace(
+                    [
+                        'DummyModelName',
+                        'DummyRelationName',
+                        'DummyRootNamespace',
+                        'DummyRelationModelName',
+                    ],
+                    [
+                        $this->option('model'),
+                        $relationship->name,
+                        $this->rootNamespace(),
+                        $relationship->model
+                    ],
+                    $relStub
+                );
+            }
+        } else {
+            return '';
+        }
+        return $rel;
     }
 }
