@@ -91,7 +91,7 @@ class FactoryMakeCommand extends GeneratorCommand
 
     public function addFakerData($factory)
     {
-        $fields = cache()->get('structure')->fields;
+        $fields   = cache()->get('structure')->fields;
         $newLines = '';
         foreach ($fields as $field) {
             foreach ($this->fakerType() as $key => $value) {
@@ -108,14 +108,14 @@ class FactoryMakeCommand extends GeneratorCommand
     protected function fakerType()
     {
         return [
-            'string' => 'word',
-            'text' => 'paragraph',
-            'integer' => 'numberBetween(1,100)',
-            'bigInteger' => 'numberBetween(1,100)',
+            'string'             => 'word',
+            'text'               => 'paragraph',
+            'integer'            => 'numberBetween(1,100)',
+            'bigInteger'         => 'numberBetween(1,100)',
             'unsignedBigInteger' => 'numberBetween(1,100)',
-            'unsignedInteger' => 'numberBetween(1,100)',
-            'boolean' => 'boolean()',
-            'dateTime' => 'dateTime()'
+            'unsignedInteger'    => 'numberBetween(1,100)',
+            'boolean'            => 'boolean()',
+            'dateTime'           => 'dateTime()'
         ];
     }
 }

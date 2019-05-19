@@ -16,6 +16,17 @@ class JsonMakeCommand extends MakeFile
     protected $signature = 'crud:json {model_name : Name of the json file you want to give.}';
 
     /**
+         * Execute the console command.
+         *
+         * @return mixed
+         */
+    public function handle()
+    {
+        $this->makeFile();
+        $this->info('A Json file to define model structure is created. CRUD it fast.');
+    }
+
+    /**
      * The description of the command.
      *
      * @var string

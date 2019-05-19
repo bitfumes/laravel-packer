@@ -139,7 +139,7 @@ class TestMakeCommand extends GeneratorCommand
                     [
                         $this->option('model'),
                         $relationship->name,
-                        $this->rootNamespace(),
+                        $this->namespaceFromComposer(),
                         $relationship->model
                     ],
                     $relStub

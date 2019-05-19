@@ -16,14 +16,14 @@ class ControllerMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'crud:controller';
+    protected $name      = 'crud:controller';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new controller class';
+    protected $description = 'Create a new controller class ';
 
     /**
      * The type of class being generated.
@@ -40,9 +40,9 @@ class ControllerMakeCommand extends GeneratorCommand
     protected function getStub()
     {
         $stub = null;
-        if (cache()->get('structure')->type == 'api') {
+        if ($this->option('api')) {
             $stub = '/stubs/controllers/ControllerApi.stub';
-        } elseif (cache()->get('structure')->type == 'web') {
+        } else {
             $stub = '/stubs/controllers/ControllerWeb.stub';
         }
 
@@ -80,6 +80,9 @@ class ControllerMakeCommand extends GeneratorCommand
 
         if ($this->option('model')) {
             $replace = $this->buildModelReplacements($replace);
+        } else {
+            $this->error('Please provide model flag to attach CRUD controller');
+            die();
         }
 
         $replace["use {$controllerNamespace}\Controller;\n"] = '';

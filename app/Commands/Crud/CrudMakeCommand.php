@@ -37,25 +37,26 @@ class CrudMakeCommand extends Command
         $model     = $this->modelName();
 
         Cache::forever('structure', $structure);
-        $this->callSilent('crud:model', [
+        $this->call('crud:model', [
             'name' => $model,
             '-r'   => true,
             '-m'   => true,
             '-f'   => true
         ]);
 
-        $this->callSilent('crud:test', [
+        $this->call('crud:test', [
             'name'    => "{$model}Test",
             '--model' => $model
         ]);
 
         if ($structure->type == 'web') {
-            $this->callSilent('crud:views', [
+            $this->call('crud:views', [
                 'name' => $model
             ]);
         } else {
-            $this->callSilent('crud:addRoute', [
-                'name' => $model
+            $this->call('crud:addRoute', [
+                'name'  => $model,
+                '--api' => $structure->type == 'api'
             ]);
         }
     }

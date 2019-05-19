@@ -14,7 +14,7 @@ class AddRouteCommand extends GeneratorCommand
      * @var string
      */
     protected $name      = 'crud:addRoute';
-    protected $signature = 'crud:addRoute {name}';
+    protected $signature = 'crud:addRoute {name} {--api : Create apiResource route}';
 
     /**
      * The console command description.
@@ -50,7 +50,7 @@ class AddRouteCommand extends GeneratorCommand
     public function addLine($path)
     {
         $model        = $this->argument('name');
-        $resourceType = cache()->get('structure')->type == 'api' ? 'apiResource' : 'resource';
+        $resourceType = $this->option('api') == 'api' ? 'apiResource' : 'resource';
         $routes       = "\nRoute::{$resourceType}('" . strToLower($model) . "','" . $model . "Controller');";
         file_put_contents($path, $routes, FILE_APPEND);
     }

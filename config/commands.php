@@ -79,7 +79,17 @@ return [
         App\Commands\TestDir\Testcase::class,
         App\Commands\TestDir\UnitTest::class,
 
-        // App\Commands\Crud\RouteMakeCommand::class,
+        App\Commands\Crud\TestMakeCommand::class,
+        App\Commands\Crud\ModelMakeCommand::class,
+        App\Commands\Crud\MigrateMakeCommand::class,
+        App\Commands\Crud\Views\EditMakeCommand::class,
+        App\Commands\Crud\Views\IndexMakeCommand::class,
+        App\Commands\Crud\Views\CreateMakeCommand::class,
+        App\Commands\Crud\Views\LayoutAppMakeCommand::class,
+        App\Commands\Crud\Views\LayoutFlashMakeCommand::class,
+        App\Commands\Crud\Views\ShowMakeCommand::class,
+        App\Commands\Crud\ViewsMakeCommand::class,
+        App\Commands\Crud\Factories\FactoryMakeCommand::class,
 
         App\Commands\Author::class,
         App\Commands\Email::class,

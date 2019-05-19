@@ -130,6 +130,7 @@ class ModelMakeCommand extends GeneratorCommand
         $this->call('crud:controller', [
             'name'    => "{$controller}Controller",
             '--model' => $this->option('resource') ? $modelName : null,
+            '--api'   => cache()->get('structure')->type == 'api'
         ]);
     }
 

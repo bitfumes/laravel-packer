@@ -27,7 +27,7 @@ class ViewsMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $type = 'view';
+    protected $type = 'Views';
 
     /**
      * Execute the console command.
@@ -36,8 +36,9 @@ class ViewsMakeCommand extends GeneratorCommand
      */
     public function handle()
     {
-        $this->callSilent('crud:addRoute', [
-            'name' => $this->argument('name')
+        $this->call('crud:addRoute', [
+            'name'  => $this->argument('name'),
+            '--api' => cache()->get('structure')->type == 'api'
         ]);
 
         $this->callSilent('crud:layout.app', [
