@@ -3,9 +3,8 @@
 namespace App\Commands\Crud\Views;
 
 use Illuminate\Support\Str;
-use Illuminate\Console\GeneratorCommand;
-use Symfony\Component\Console\Input\InputOption;
 use App\Commands\Helpers\PackageDetail;
+use Illuminate\Console\GeneratorCommand;
 
 class LayoutAppMakeCommand extends GeneratorCommand
 {
@@ -31,7 +30,6 @@ class LayoutAppMakeCommand extends GeneratorCommand
      */
     protected $type = 'view';
 
-
     protected function getStub()
     {
         return __DIR__ . '/../stubs/views/app.stub';
@@ -55,8 +53,10 @@ class LayoutAppMakeCommand extends GeneratorCommand
      */
     public function getPath($name)
     {
-        $name = Str::replaceFirst($this->rootNamespace(), '', $name);
-        $path = getcwd() . $this->devPath() . '/src/resources/views/layouts';
+        $name    = Str::replaceFirst($this->rootNamespace(), '', $name);
+        $path    = getcwd() . $this->devPath();
+        $path    = $this->getComposer()->type !== 'project' ? $path . 'src/' : $path;
+        $path    = $path . 'resources/views/layouts';
         return $path . '/app.blade.php';
     }
 
@@ -82,7 +82,7 @@ class LayoutAppMakeCommand extends GeneratorCommand
                 strtolower($this->argument('name')),
                 Str::plural($this->argument('name')),
                 $this->replaceLayout(),
-                $this->createFields()
+                $this->createFields(),
             ],
             $stub
         );
@@ -98,7 +98,7 @@ class LayoutAppMakeCommand extends GeneratorCommand
 
     public function createFields()
     {
-        $fields = cache()->get('structure')->fields;
+        $fields      = cache()->get('structure')->fields;
         $inputFields = '';
         foreach ($fields as $field) {
             $inputFields .= $this->generateFieldStub($field);
@@ -117,11 +117,11 @@ class LayoutAppMakeCommand extends GeneratorCommand
         return str_replace(
             [
                 'DummyModelVariable',
-                'DummyModelCapitalVariable'
+                'DummyModelCapitalVariable',
             ],
             [
                 $field->name,
-                ucfirst($field->name)
+                ucfirst($field->name),
             ],
             $stub
         );

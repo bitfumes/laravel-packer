@@ -3,9 +3,9 @@
 namespace App\Commands\Crud;
 
 use Illuminate\Support\Str;
+use App\Commands\Helpers\PackageDetail;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
-use App\Commands\Helpers\PackageDetail;
 
 class ModelMakeCommand extends GeneratorCommand
 {
@@ -38,11 +38,7 @@ class ModelMakeCommand extends GeneratorCommand
      */
     public function handle()
     {
-        // if (isset(cache()->get('structure')->relationships)) {
-        //     $this->createRelationship();
-        // }
-
-        if (parent::handle() === false && !$this->option('force')) {
+        if (parent::handle() === false && ! $this->option('force')) {
             return false;
         }
 
@@ -130,7 +126,7 @@ class ModelMakeCommand extends GeneratorCommand
         $this->call('crud:controller', [
             'name'    => "{$controller}Controller",
             '--model' => $this->option('resource') ? $modelName : null,
-            '--api'   => cache()->get('structure')->type == 'api'
+            '--api'   => cache()->get('structure')->type == 'api',
         ]);
     }
 
@@ -205,5 +201,14 @@ class ModelMakeCommand extends GeneratorCommand
 
             ['resource', 'r', InputOption::VALUE_NONE, 'Indicates if the generated controller should be a resource controller'],
         ];
+    }
+
+    public function getPath($name)
+    {
+        $content = $this->getComposer();
+        $name    = Str::replaceFirst($this->rootNamespace(), '', $name);
+        $path    = getcwd() . $this->devPath();
+        $path    = $content->type === 'project' ? $path . '/app/' : $path . '/src/';
+        return  $path . str_replace('\\', '/', $name) . '.php';
     }
 }

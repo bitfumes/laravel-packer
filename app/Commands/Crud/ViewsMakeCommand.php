@@ -2,8 +2,8 @@
 
 namespace App\Commands\Crud;
 
-use Illuminate\Console\GeneratorCommand;
 use App\Commands\Helpers\PackageDetail;
+use Illuminate\Console\GeneratorCommand;
 
 class ViewsMakeCommand extends GeneratorCommand
 {
@@ -38,31 +38,31 @@ class ViewsMakeCommand extends GeneratorCommand
     {
         $this->call('crud:addRoute', [
             'name'  => $this->argument('name'),
-            '--api' => cache()->get('structure')->type == 'api'
+            '--api' => cache()->get('structure')->type == 'api',
         ]);
 
         $this->callSilent('crud:layout.app', [
-            'name' => $this->argument('name')
+            'name' => $this->argument('name'),
         ]);
 
         $this->callSilent('crud:layout.flash', [
-            'name' => $this->argument('name')
+            'name' => $this->argument('name'),
         ]);
 
         $this->callSilent('crud:view.index', [
-            'name' => $this->argument('name')
+            'name' => $this->argument('name'),
         ]);
 
         $this->callSilent('crud:view.create', [
-            'name' => $this->argument('name')
+            'name' => $this->argument('name'),
         ]);
 
         $this->callSilent('crud:view.edit', [
-            'name' => $this->argument('name')
+            'name' => $this->argument('name'),
         ]);
 
         $this->callSilent('crud:view.show', [
-            'name' => $this->argument('name')
+            'name' => $this->argument('name'),
         ]);
     }
 

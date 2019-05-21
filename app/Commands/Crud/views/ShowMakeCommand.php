@@ -3,9 +3,8 @@
 namespace App\Commands\Crud\Views;
 
 use Illuminate\Support\Str;
-use Illuminate\Console\GeneratorCommand;
-use Symfony\Component\Console\Input\InputOption;
 use App\Commands\Helpers\PackageDetail;
+use Illuminate\Console\GeneratorCommand;
 
 class ShowMakeCommand extends GeneratorCommand
 {
@@ -31,7 +30,6 @@ class ShowMakeCommand extends GeneratorCommand
      */
     protected $type = 'view';
 
-
     protected function getStub()
     {
         return __DIR__ . '/../stubs/views/show.stub';
@@ -55,8 +53,10 @@ class ShowMakeCommand extends GeneratorCommand
      */
     public function getPath($name)
     {
-        $name = Str::replaceFirst($this->rootNamespace(), '', $name);
-        $path = getcwd() . $this->devPath() . '/src/resources/views/' . strtolower($this->argument('name'));
+        $name    = Str::replaceFirst($this->rootNamespace(), '', $name);
+        $path    = getcwd() . $this->devPath();
+        $path    = $this->getComposer()->type !== 'project' ? $path . 'src/' : $path;
+        $path    = $path . 'resources/views/' . strtolower($this->argument('name'));
         return $path . '/show.blade.php';
     }
 
@@ -75,14 +75,14 @@ class ShowMakeCommand extends GeneratorCommand
                 'DummyModelLower',
                 'DummyModelPlural',
                 'InputFieldsReplacer',
-                'DummyPackageName::'
+                'DummyPackageName::',
             ],
             [
                 $this->argument('name'),
                 strtolower($this->argument('name')),
                 Str::plural($this->argument('name')),
                 $this->createFields(),
-                $this->replaceLayout()
+                $this->replaceLayout(),
             ],
             $stub
         );
@@ -90,10 +90,9 @@ class ShowMakeCommand extends GeneratorCommand
         return $this;
     }
 
-
     public function createFields()
     {
-        $fields = cache()->get('structure')->fields;
+        $fields      = cache()->get('structure')->fields;
         $inputFields = '';
         foreach ($fields as $field) {
             $inputFields .= $this->generateFieldStub($field);
@@ -113,12 +112,12 @@ class ShowMakeCommand extends GeneratorCommand
             [
                 'DummyModelLower',
                 'DummyModelVariable',
-                'DummyModelCapitalVariable'
+                'DummyModelCapitalVariable',
             ],
             [
                 strtolower($this->argument('name')),
                 $field->name,
-                ucfirst($field->name)
+                ucfirst($field->name),
             ],
             $stub
         );

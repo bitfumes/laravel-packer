@@ -45,7 +45,7 @@ class JsonMakeCommand extends MakeFile
 
     public function getPath()
     {
-        $name = $this->rootNamespace();
-        return getcwd() . $this->devPath() . '/crud';
+        $path            = getcwd() . $this->devPath();
+        return $path . '/crud';
     }
 }

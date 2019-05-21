@@ -3,9 +3,8 @@
 namespace App\Commands\Crud\Views;
 
 use Illuminate\Support\Str;
-use Illuminate\Console\GeneratorCommand;
-use Symfony\Component\Console\Input\InputOption;
 use App\Commands\Helpers\PackageDetail;
+use Illuminate\Console\GeneratorCommand;
 
 class IndexMakeCommand extends GeneratorCommand
 {
@@ -31,7 +30,6 @@ class IndexMakeCommand extends GeneratorCommand
      */
     protected $type = 'view';
 
-
     protected function getStub()
     {
         return __DIR__ . '/../stubs/views/index.stub';
@@ -55,8 +53,10 @@ class IndexMakeCommand extends GeneratorCommand
      */
     public function getPath($name)
     {
-        $name = Str::replaceFirst($this->rootNamespace(), '', $name);
-        $path = getcwd() . $this->devPath() . '/src/resources/views/' . strtolower($this->argument('name'));
+        $name    = Str::replaceFirst($this->rootNamespace(), '', $name);
+        $path    = getcwd() . $this->devPath();
+        $path    = $this->getComposer()->type !== 'project' ? $path . 'src/' : $path;
+        $path    = $path . 'resources/views/' . strtolower($this->argument('name'));
         return $path . '/index.blade.php';
     }
 
@@ -76,7 +76,7 @@ class IndexMakeCommand extends GeneratorCommand
                 'DummyModelName',
                 'DummyModelLower',
                 'DummyModelPlural',
-                'DummyPackageName::'
+                'DummyPackageName::',
             ],
             [
                 $this->createFields(),
@@ -84,7 +84,7 @@ class IndexMakeCommand extends GeneratorCommand
                 $this->argument('name'),
                 strtolower($this->argument('name')),
                 Str::plural(strtolower($this->argument('name'))),
-                $this->replaceLayout()
+                $this->replaceLayout(),
             ],
             $stub
         );
@@ -101,7 +101,7 @@ class IndexMakeCommand extends GeneratorCommand
     public function createFields()
     {
         $fields = cache()->get('structure')->fields;
-        $th = '';
+        $th     = '';
         foreach ($fields as $field) {
             $th .= "<th>{$field->name}</th>
                     ";
@@ -112,8 +112,8 @@ class IndexMakeCommand extends GeneratorCommand
     public function createValues()
     {
         $fields = cache()->get('structure')->fields;
-        $model = strToLower($this->argument('name'));
-        $td = '';
+        $model  = strToLower($this->argument('name'));
+        $td     = '';
         foreach ($fields as $field) {
             $td .= '<td>{{ $' . $model . "->{$field->name} }}</td>
                     ";

@@ -2,10 +2,10 @@
 
 namespace App\Commands\Crud;
 
-use LaravelZero\Framework\Commands\Command;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
 use App\Commands\Helpers\PackageDetail;
-use Illuminate\Support\Str;
+use LaravelZero\Framework\Commands\Command;
 
 class CrudMakeCommand extends Command
 {
@@ -41,22 +41,22 @@ class CrudMakeCommand extends Command
             'name' => $model,
             '-r'   => true,
             '-m'   => true,
-            '-f'   => true
+            '-f'   => true,
         ]);
 
         $this->call('crud:test', [
             'name'    => "{$model}Test",
-            '--model' => $model
+            '--model' => $model,
         ]);
 
         if ($structure->type == 'web') {
             $this->call('crud:views', [
-                'name' => $model
+                'name' => $model,
             ]);
         } else {
             $this->call('crud:addRoute', [
                 'name'  => $model,
-                '--api' => $structure->type == 'api'
+                '--api' => $structure->type == 'api',
             ]);
         }
     }
@@ -79,7 +79,7 @@ class CrudMakeCommand extends Command
     {
         $file      = $this->argument('file');
         $file_path = $this->getPath($file);
-        if (!file_exists($file_path)) {
+        if (! file_exists($file_path)) {
             $this->error('File not found, please give relative path.');
             die();
         }
@@ -89,7 +89,7 @@ class CrudMakeCommand extends Command
     public function getPath($name)
     {
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
-        $path = getcwd() . $this->devPath() . '/';
+        $path = getcwd() . $this->devPath();
         return $path . str_replace('\\', '/', $name);
     }
 }

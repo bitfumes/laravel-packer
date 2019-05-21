@@ -15,9 +15,6 @@ trait PackageDetail
 
     public function namespaceFromComposer()
     {
-        if (cache()->has('namespaceFromComposer')) {
-            return cache()->get('namespaceFromComposer');
-        }
         $content = $this->getComposer();
         $psr     = 'psr-4';
         cache()->forever('namespaceFromComposer', key($content->autoload->$psr));
@@ -46,13 +43,14 @@ trait PackageDetail
 
     public function devPath()
     {
-        return (app()->environment() == 'development') ? '/package/' . $this->getPackageName() : '';
+        return (app()->environment() === 'development') ? '/package/' . $this->getPackageName() . '/' : '/';
     }
 
     public function getPath($name)
     {
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
-        $path = getcwd() . $this->devPath() . '/src/';
+        $path = getcwd() . $this->devPath();
+        $path = $this->getComposer()->type !== 'project' ? $path . 'src/' : $path;
         return $path . str_replace('\\', '/', $name) . '.php';
     }
 }

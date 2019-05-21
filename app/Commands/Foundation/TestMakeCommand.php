@@ -2,9 +2,9 @@
 
 namespace App\Commands\Foundation;
 
-use Illuminate\Foundation\Console\TestMakeCommand as TestMake;
 use Illuminate\Support\Str;
 use App\Commands\Helpers\PackageDetail;
+use Illuminate\Foundation\Console\TestMakeCommand as TestMake;
 
 class TestMakeCommand extends TestMake
 {
@@ -44,14 +44,17 @@ class TestMakeCommand extends TestMake
      */
     protected function rootNamespace()
     {
-        return $this->namespaceFromComposer() . 'Tests';
+        $content    = $this->getComposer();
+        $loading    = 'autoload-dev';
+        $psr        = 'psr-4';
+        return key($content->$loading->$psr);
     }
 
     public function getPath($name)
     {
-        $name = Str::replaceFirst($this->rootNamespace(), '', $name);
+        $name     = Str::replaceFirst($this->rootNamespace(), '', $name);
         $dev_path = (app()->environment() == 'development') ? '/package/' . $this->getPackageName() : '';
-        $path = getcwd() . $dev_path . '/tests/';
+        $path     = getcwd() . $dev_path . '/tests/';
         return $path . str_replace('\\', '/', $name) . '.php';
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Commands\Crud;
 
-use Illuminate\Console\GeneratorCommand;
 use App\Commands\Helpers\PackageDetail;
+use Illuminate\Console\GeneratorCommand;
 
 class RouteMakeCommand extends GeneratorCommand
 {
@@ -13,7 +13,7 @@ class RouteMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:routefile';
+    protected $name      = 'make:routefile';
     protected $signature = 'make:routefile {path} {name}';
 
     /**
@@ -50,7 +50,7 @@ class RouteMakeCommand extends GeneratorCommand
         $path = $this->argument('path');
         $name = $this->argument('name');
 
-        if (!is_dir($path)) {
+        if (! is_dir($path)) {
             mkdir($path, 0777, true);
         }
 

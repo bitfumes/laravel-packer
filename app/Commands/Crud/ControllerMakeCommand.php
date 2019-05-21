@@ -4,9 +4,9 @@ namespace App\Commands\Crud;
 
 use Illuminate\Support\Str;
 use InvalidArgumentException;
+use App\Commands\Helpers\PackageDetail;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
-use App\Commands\Helpers\PackageDetail;
 
 class ControllerMakeCommand extends GeneratorCommand
 {
@@ -103,7 +103,7 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         $parentModelClass = $this->parseModel($this->option('parent'));
 
-        if (!class_exists($parentModelClass)) {
+        if (! class_exists($parentModelClass)) {
             if ($this->confirm("A {$parentModelClass} model does not exist. Do you want to generate it?", true)) {
                 $this->call('make:model', ['name' => $parentModelClass]);
             }
@@ -112,7 +112,7 @@ class ControllerMakeCommand extends GeneratorCommand
         return [
             'ParentDummyFullModelClass' => $parentModelClass,
             'ParentDummyModelClass'     => class_basename($parentModelClass),
-            'ParentDummyModelVariable'  => lcfirst(class_basename($parentModelClass))
+            'ParentDummyModelVariable'  => lcfirst(class_basename($parentModelClass)),
         ];
     }
 
@@ -143,7 +143,7 @@ class ControllerMakeCommand extends GeneratorCommand
             'DummyPackageName::'        => $this->replaceLayout(),
             'DummyModelClass'           => class_basename($modelClass),
             'DummyModelVariable'        => lcfirst(class_basename($modelClass)),
-            'DummyModelPluralVariable'  => Str::plural(lcfirst(class_basename($modelClass)))
+            'DummyModelPluralVariable'  => Str::plural(lcfirst(class_basename($modelClass))),
         ]);
     }
 
@@ -163,7 +163,7 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $model = trim(str_replace('/', '\\', $model), '\\');
 
-        if (!Str::startsWith($model, $rootNamespace = $this->rootNamespace())) {
+        if (! Str::startsWith($model, $rootNamespace = $this->rootNamespace())) {
             $model = $rootNamespace . $model;
         }
 
@@ -184,5 +184,14 @@ class ControllerMakeCommand extends GeneratorCommand
             ['parent', 'p', InputOption::VALUE_OPTIONAL, 'Generate a nested resource controller class.'],
             ['api', null, InputOption::VALUE_NONE, 'Exclude the create and edit methods from the controller.'],
         ];
+    }
+
+    public function getPath($name)
+    {
+        $content = $this->getComposer();
+        $name    = Str::replaceFirst($this->rootNamespace(), '', $name);
+        $path    = getcwd() . $this->devPath();
+        $path    = $content->type === 'project' ? $path . '/app/' : $path . '/src/';
+        return  $path . str_replace('\\', '/', $name) . '.php';
     }
 }

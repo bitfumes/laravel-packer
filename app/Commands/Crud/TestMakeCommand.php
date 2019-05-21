@@ -55,7 +55,10 @@ class TestMakeCommand extends GeneratorCommand
      */
     protected function rootNamespace()
     {
-        return $this->namespaceFromComposer() . 'Tests';
+        $content         = $this->getComposer();
+        $loading         = 'autoload-dev';
+        $psr             = 'psr-4';
+        return key($content->$loading->$psr);
     }
 
     public function getPath($name)
@@ -101,7 +104,7 @@ class TestMakeCommand extends GeneratorCommand
                 'DummyModelFieldName',
                 'DummyPluralModelName',
                 'NamespacedDummyUserModel',
-                '//Relationships'
+                '//Relationships',
             ],
             [
                 strtolower($model),
@@ -112,7 +115,7 @@ class TestMakeCommand extends GeneratorCommand
                 cache()->get('structure')->fields[0]->name,
                 Str::plural($model),
                 $this->userProviderModel(),
-                $this->createRelationships()
+                $this->createRelationships(),
             ],
             $stub
         );
@@ -140,7 +143,7 @@ class TestMakeCommand extends GeneratorCommand
                         $this->option('model'),
                         $relationship->name,
                         $this->namespaceFromComposer(),
-                        $relationship->model
+                        $relationship->model,
                     ],
                     $relStub
                 );

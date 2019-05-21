@@ -2,10 +2,10 @@
 
 namespace App\Commands\Crud\Factories;
 
+use Illuminate\Support\Str;
+use App\Commands\Helpers\PackageDetail;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
-use App\Commands\Helpers\PackageDetail;
-use Illuminate\Support\Str;
 
 class FactoryMakeCommand extends GeneratorCommand
 {
@@ -72,8 +72,9 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        $name = Str::replaceFirst($this->rootNamespace(), '', $name);
-        $path = getcwd() . $this->devPath() . '/src/';
+        $name    = Str::replaceFirst($this->rootNamespace(), '', $name);
+        $path    = getcwd() . $this->devPath();
+        $path    = $this->getComposer()->type !== 'project' ? $path . 'src/' : $path;
         return $path . '/database/factories/' . str_replace('\\', '/', $name) . '.php';
     }
 
@@ -115,7 +116,7 @@ class FactoryMakeCommand extends GeneratorCommand
             'unsignedBigInteger' => 'numberBetween(1,100)',
             'unsignedInteger'    => 'numberBetween(1,100)',
             'boolean'            => 'boolean()',
-            'dateTime'           => 'dateTime()'
+            'dateTime'           => 'dateTime()',
         ];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use DummyRootNamespace\TestCase;
+use DummyRootNamespaceTestCase;
 
 class DummyClass extends TestCase
 {

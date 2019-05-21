@@ -2,8 +2,9 @@
 
 namespace App\Commands\Foundation;
 
-use Illuminate\Foundation\Console\ModelMakeCommand as ModelMake;
+use Illuminate\Support\Str;
 use App\Commands\Helpers\PackageDetail;
+use Illuminate\Foundation\Console\ModelMakeCommand as ModelMake;
 
 class ModelMakeCommand extends ModelMake
 {
@@ -21,4 +22,13 @@ class ModelMakeCommand extends ModelMake
      * @var string
      */
     protected $description = 'Create a new Eloquent model class in your package';
+
+    public function getPath($name)
+    {
+        $content = $this->getComposer();
+        $name    = Str::replaceFirst($this->rootNamespace(), '', $name);
+        $path    = getcwd() . $this->devPath();
+        $path    = $content->type === 'project' ? $path . '/app/' : $path;
+        return  $path . str_replace('\\', '/', $name) . '.php';
+    }
 }

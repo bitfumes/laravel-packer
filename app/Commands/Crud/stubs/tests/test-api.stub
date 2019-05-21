@@ -3,7 +3,7 @@
 namespace DummyNamespace;
 
 use DummyFullModelClass;
-use DummyRootNamespace\TestCase;
+use DummyRootNamespaceTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class DummyClass extends TestCase

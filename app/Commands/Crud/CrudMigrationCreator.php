@@ -2,8 +2,8 @@
 
 namespace App\Commands\Crud;
 
-use Illuminate\Database\Migrations\MigrationCreator as RealMigrationCreator;
 use App\Commands\Helpers\PackageDetail;
+use Illuminate\Database\Migrations\MigrationCreator as RealMigrationCreator;
 
 class CrudMigrationCreator extends RealMigrationCreator
 {
@@ -18,8 +18,11 @@ class CrudMigrationCreator extends RealMigrationCreator
      */
     protected function getPath($name, $path)
     {
-        $path = getcwd() . $this->devPath() . '/src/database/migrations';
-        if (!$this->files->isDirectory($path)) {
+        $path = getcwd() . $this->devPath();
+        $path = $this->getComposer()->type === 'library' ? $path . 'src/' : $path;
+        $path = $path . 'database/migrations';
+
+        if (! $this->files->isDirectory($path)) {
             $this->files->makeDirectory($path, 0777, true);
         }
 
@@ -50,16 +53,16 @@ class CrudMigrationCreator extends RealMigrationCreator
 
     public function addFieldsToStub($table, $create)
     {
-        $stub = $this->getStub($table, $create);
-        $fields = cache()->get('structure')->fields;
+        $stub    = $this->getStub($table, $create);
+        $fields  = cache()->get('structure')->fields;
         $newLine = '';
         foreach ($fields as $field) {
             $newLine .= '
             $table->' . $field->type . '(\'' . $field->name . '\');';
         }
-        $to_replace = '$table->bigIncrements(\'id\');';
+        $to_replace   = '$table->bigIncrements(\'id\');';
         $replace_with = $to_replace . $newLine;
-        $result = str_replace($to_replace, $replace_with, $stub);
+        $result       = str_replace($to_replace, $replace_with, $stub);
         return $result;
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Commands\Crud;
 
-use Illuminate\Console\GeneratorCommand;
 use App\Commands\Helpers\PackageDetail;
+use Illuminate\Console\GeneratorCommand;
 
 class AddRouteCommand extends GeneratorCommand
 {
@@ -41,6 +41,7 @@ class AddRouteCommand extends GeneratorCommand
     public function addRouteLine()
     {
         $path = getcwd() . $this->devPath();
+        $path = $this->getComposer()->type === 'library' ? $path . 'src/' : $path;
         $path = $this->getRouteFilePath($path);
         if ($path) {
             $this->addLine($path);
@@ -59,7 +60,7 @@ class AddRouteCommand extends GeneratorCommand
     {
         $content = $this->getComposer();
         if ($content->type == 'project') {
-            $path = $path . '/routes/web.php';
+            $path = $path . 'routes/web.php';
         } elseif ($content->type == 'library' || $content->type == 'package') {
             $path = $this->packageRoutePath($path);
         }
@@ -68,7 +69,7 @@ class AddRouteCommand extends GeneratorCommand
 
     public function packageRoutePath($path)
     {
-        $provider  = file($path . '/src/' . $this->getPackageName() . 'ServiceProvider.php');
+        $provider  = file($path . $this->getPackageName() . 'ServiceProvider.php');
         $routeLine = $this->readServiceProvider($provider);
         if ($routeLine == '') {
             return false;
@@ -90,12 +91,12 @@ class AddRouteCommand extends GeneratorCommand
     public function extractFileNameAndPath($routeLine, $path)
     {
         preg_match('/__DIR__\s?.\s?(\'|")(\/\w+)+\/(\w+.php)(?=(\'|")\);)/', $routeLine, $matches);
-        $path                  =  "{$path}/src{$matches[2]}";
+        $path                  =  "{$path}{$matches[2]}";
         $routePathWithFileName =  "$path/$matches[3]";
-        if (!file_exists("$path/$matches[3]")) {
+        if (! file_exists("$path/$matches[3]")) {
             $this->callSilent('make:routefile', [
                 'name' => $matches[3],
-                'path' => $path
+                'path' => $path,
             ]);
         }
         return $routePathWithFileName;
