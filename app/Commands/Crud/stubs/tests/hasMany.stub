@@ -1,0 +1,7 @@
+/** @test */
+public function it_has_many_DummyRelationName()
+{
+    $DummyModelName  = factory(\DummyRootNamespaceDummyModelName::class)->create();
+    $DummyRelationName = factory(\DummyRootNamespaceDummyRelationModelName::class)->create(['DummyModelName_id' => $DummyModelName->id]);
+    $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $DummyModelName->DummyRelationName);
+}

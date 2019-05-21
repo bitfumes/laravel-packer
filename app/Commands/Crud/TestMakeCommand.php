@@ -131,6 +131,8 @@ class TestMakeCommand extends GeneratorCommand
             foreach ($structure->relationships as $relationship) {
                 if ($relationship->type == 'belongsTo') {
                     $relStub = file_get_contents(__DIR__ . '/stubs/tests/belongsTo.stub');
+                } elseif ($relationship->type == 'hasMany') {
+                    $relStub = file_get_contents(__DIR__ . '/stubs/tests/hasMany.stub');
                 }
                 $rel .= str_replace(
                     [
