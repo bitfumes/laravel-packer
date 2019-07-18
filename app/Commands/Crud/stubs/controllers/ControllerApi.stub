@@ -52,7 +52,7 @@ class DummyClass extends Controller
      */
     public function update(Request $request, DummyModelClass $DummyModelVariable)
     {
-        $DummyModelVariable = $DummyModelVariable->update($request->all());
+        $DummyModelVariable->update($request->all());
         return response(['data' => $DummyModelVariable], Response::HTTP_ACCEPTED);
     }
 
