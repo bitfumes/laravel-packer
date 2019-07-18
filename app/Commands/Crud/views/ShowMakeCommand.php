@@ -71,6 +71,7 @@ class ShowMakeCommand extends GeneratorCommand
     {
         $stub = str_replace(
             [
+                '//FIELD',
                 'DummyModelName',
                 'DummyModelLower',
                 'DummyModelPlural',
@@ -78,6 +79,7 @@ class ShowMakeCommand extends GeneratorCommand
                 'DummyPackageName::',
             ],
             [
+                $this->createFirstField(),
                 $this->argument('name'),
                 strtolower($this->argument('name')),
                 Str::plural($this->argument('name')),
@@ -98,6 +100,13 @@ class ShowMakeCommand extends GeneratorCommand
             $inputFields .= $this->generateFieldStub($field);
         }
         return $inputFields;
+    }
+
+    public function createFirstField()
+    {
+        $fields      = cache()->get('structure')->fields;
+        $model       = strtolower($this->argument('name'));
+        return "{$model}->{$fields[0]->name}";
     }
 
     public function generateFieldStub($field)

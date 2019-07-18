@@ -5,8 +5,11 @@ namespace DummyNamespace;
 use DummyRootNamespaceTestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class DummyClass extends TestCase
 {
+    use DatabaseMigrations;
+
     //Relationships
 }

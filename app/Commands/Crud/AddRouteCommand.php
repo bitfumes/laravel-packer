@@ -60,7 +60,7 @@ class AddRouteCommand extends GeneratorCommand
     {
         $content = $this->getComposer();
         if ($content->type == 'project') {
-            $path = $path . 'routes/web.php';
+            $path = $this->option('api') == 'api' ? $path . 'routes/api.php' : $path . 'routes/web.php';
         } elseif ($content->type == 'library' || $content->type == 'package') {
             $path = $this->packageRoutePath($path);
         }

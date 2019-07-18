@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="card-body">
-                    // to be done
+                    {{ $//FIELD }}
                 </div>
             </div>
         </div>
