@@ -57,8 +57,12 @@ class CrudMigrationCreator extends RealMigrationCreator
         $fields  = cache()->get('structure')->fields;
         $newLine = '';
         foreach ($fields as $field) {
+            $index           = isset($field->index) ? '->index()' : '';
+            $def             = isset($field->def) ? "->default('{$field->def}')" : '';
+            $length          = isset($field->length) ? ",{$field->length}" : '';
             $newLine .= '
-            $table->' . $field->type . '(\'' . $field->name . '\');';
+            $table->' . "{$field->type}('{$field->name}'$length){$index}{$def};";
+            // $table->' . $field->type . '(\'' . $field->name . '\');';
         }
         $to_replace   = '$table->bigIncrements(\'id\');';
         $replace_with = $to_replace . $newLine;

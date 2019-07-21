@@ -2,11 +2,14 @@
     "type": "api",
     "fields": [{
             "name": "title",
-            "type": "string"
+            "length": 200,
+            "type": "string",
+            "index": true
         },
         {
             "name": "body",
-            "type": "text"
+            "type": "text",
+            "def": "abc"
         }
     ],
     "relationships": [{
