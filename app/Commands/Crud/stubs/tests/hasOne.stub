@@ -1,7 +1,7 @@
 /** @test */
-public function it_has_many_DummyRelationName()
+public function it_has_only_one_DummyRelationName()
 {
     $DummyModelName  = factory(\DummyRootNamespaceDummyModelName::class)->create();
     $DummyRelationName = factory(\DummyRootNamespaceDummyRelationModelName::class)->create(['DummyForeignKeyName' => DummyLocalKeyName]);
-    $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $DummyModelName->DummyRelationName);
+    $this->assertInstanceOf(\DummyRootNamespaceDummyRelationModelName::class, $DummyModelName->DummyRelationName);
 }

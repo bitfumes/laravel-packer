@@ -58,10 +58,11 @@ class CrudMigrationCreator extends RealMigrationCreator
         $newLine = '';
         foreach ($fields as $field) {
             $index           = isset($field->index) ? '->index()' : '';
+            $nullable        = isset($field->nullable) ? '->nullable()' : '';
             $def             = isset($field->def) ? "->default('{$field->def}')" : '';
             $length          = isset($field->length) ? ",{$field->length}" : '';
             $newLine .= '
-            $table->' . "{$field->type}('{$field->name}'$length){$index}{$def};";
+            $table->' . "{$field->type}('{$field->name}'$length){$index}{$def}{$nullable};";
             // $table->' . $field->type . '(\'' . $field->name . '\');';
         }
         $to_replace   = '$table->bigIncrements(\'id\');';

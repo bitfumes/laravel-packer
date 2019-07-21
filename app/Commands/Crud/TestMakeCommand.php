@@ -131,18 +131,24 @@ class TestMakeCommand extends GeneratorCommand
             foreach ($structure->relationships as $relationship) {
                 if ($relationship->type == 'belongsTo') {
                     $relStub = file_get_contents(__DIR__ . '/stubs/tests/belongsTo.stub');
+                } elseif ($relationship->type == 'hasOne') {
+                    $relStub = file_get_contents(__DIR__ . '/stubs/tests/hasOne.stub');
                 } elseif ($relationship->type == 'hasMany') {
                     $relStub = file_get_contents(__DIR__ . '/stubs/tests/hasMany.stub');
                 }
                 $rel .= str_replace(
                     [
                         'DummyModelName',
+                        'DummyForeignKeyName',
+                        'DummyLocalKeyName',
                         'DummyRelationName',
                         'DummyRootNamespace',
                         'DummyRelationModelName',
                     ],
                     [
                         $this->option('model'),
+                        $this->getForeignKey($relationship),
+                        $this->getLocalKey($relationship),
                         $relationship->name,
                         $this->namespaceFromComposer(),
                         $relationship->model,
@@ -154,5 +160,17 @@ class TestMakeCommand extends GeneratorCommand
             return '';
         }
         return $rel;
+    }
+
+    public function getForeignKey($rel)
+    {
+        $model = $rel->type == 'belongsTo' ? $rel->name : $this->option('model');
+        return isset($rel->foreign_key) ? $rel->foreign_key : "{$model}_id";
+    }
+
+    public function getLocalKey($rel)
+    {
+        $model = $rel->type == 'belongsTo' ? $rel->name : $this->option('model');
+        return isset($rel->local_key) ? $rel->local_key : '$' . "{$model}->id";
     }
 }

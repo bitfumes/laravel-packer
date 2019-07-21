@@ -2,6 +2,6 @@
 public function it_belongs_to_DummyRelationName()
 {
     $DummyRelationName = factory(\DummyRootNamespaceDummyRelationModelName::class)->create();
-    $DummyModelName  = factory(\DummyRootNamespaceDummyModelName::class)->create(['DummyRelationName_id' => $DummyRelationName->id]);
+    $DummyModelName  = factory(\DummyRootNamespaceDummyModelName::class)->create(['DummyForeignKeyName' => DummyLocalKeyName]);
     $this->assertInstanceOf(\DummyRootNamespaceDummyRelationModelName::class, $DummyModelName->DummyRelationName);
 }

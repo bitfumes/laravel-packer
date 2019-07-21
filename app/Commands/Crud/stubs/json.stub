@@ -9,7 +9,8 @@
         {
             "name": "body",
             "type": "text",
-            "def": "abc"
+            "def": "abc",
+            "nullable": true
         }
     ],
     "relationships": [{

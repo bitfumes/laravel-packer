@@ -168,10 +168,12 @@ class ModelMakeCommand extends GeneratorCommand
     {
         $rel = '';
         foreach ($relationships as $relationship) {
+            $foreign = isset($relationship->foreign_key) ? ",'{$relationship->foreign_key}'" : '';
+            $local   = isset($relationship->local) ? ",'{$relationship->local}'" : '';
             $rel .= '
     public function ' . $relationship->name . '()
     {
-        return $this->' . $relationship->type . '(' . $relationship->model . '::class);
+        return $this->' . "{$relationship->type}({$relationship->model}::class{$foreign}{$local});" . '
     }
         ';
         }
