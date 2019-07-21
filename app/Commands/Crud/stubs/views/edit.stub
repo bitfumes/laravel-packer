@@ -14,7 +14,7 @@
                     @include('DummyPackageName::layouts.flash')
                     <form method="POST" action="{{ route('DummyModelLower.update',$DummyModelLower->id) }}">
                         @csrf
-                        @method('update')
+                        @method('patch')
 
                         InputFieldsReplacer
 
