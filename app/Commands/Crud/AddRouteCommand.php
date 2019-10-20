@@ -52,7 +52,7 @@ class AddRouteCommand extends GeneratorCommand
     {
         $model        = $this->argument('name');
         $resourceType = $this->option('api') == 'api' ? 'apiResource' : 'resource';
-        $routes       = "\nRoute::{$resourceType}('" . strToLower($model) . "','" . $model . "Controller');";
+        $routes       = "\nRoute::{$resourceType}('" . strToLower($model) . "','" . studly_case($model) . "Controller');";
         file_put_contents($path, $routes, FILE_APPEND);
     }
 
@@ -93,7 +93,7 @@ class AddRouteCommand extends GeneratorCommand
         preg_match('/__DIR__\s?.\s?(\'|")(\/\w+)+\/(\w+.php)(?=(\'|")\);)/', $routeLine, $matches);
         $path                  =  "{$path}{$matches[2]}";
         $routePathWithFileName =  "$path/$matches[3]";
-        if (! file_exists("$path/$matches[3]")) {
+        if (!file_exists("$path/$matches[3]")) {
             $this->callSilent('make:routefile', [
                 'name' => $matches[3],
                 'path' => $path,
