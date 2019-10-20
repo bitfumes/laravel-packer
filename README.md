@@ -15,7 +15,7 @@
 
 Laravel Packer was created by, and is maintained by [Sarthak](https://github.com/sarthaksavvy), and it is a Command Line Tool which is going to help you in creating package.
 
--   Built on with [Laravel-zero](http://laravel-zero.com).
+- Built on with [Laravel-zero](http://laravel-zero.com).
 
 ## Installation
 
@@ -30,7 +30,7 @@ composer global require bitfumes/laravel-packer
 ## Creating new Package Scaffolding
 
 ```bash
-packer new your-package-name {vendor} {author} {author_email}
+packr new your-package-name {vendor} {author} {author_email}
 ```
 
 ![new](https://user-images.githubusercontent.com/41295276/46673797-38331580-cbf8-11e8-88e6-5d6b0dc18b93.gif)
@@ -46,21 +46,21 @@ With this CLI, you will have access to all artisan commands you are familier on 
 You can create controller just like you do with `php artisan`
 
 ```bash
-packer make:controller controller_name
+packr make:controller controller_name
 ```
 
 ![make](https://user-images.githubusercontent.com/41295276/46673800-38cbac00-cbf8-11e8-9a1b-c02e91da8563.gif)
 
-Explore all commands, just run `packer` on your command line.
+Explore all commands, just run `packr` on your command line.
 
 _Now you can create Migrations and Factories also_
 
 ## Smart Clone
 
-With `packer clone` command you can do 3 steps in just one.
+With `packr clone` command you can do 3 steps in just one.
 
 ```bash
-packer clone {repositoryname}
+packr clone {repositoryname}
 ```
 
 This not only clone repository but also install composer and if that repository type is project, then it will generate key for project also.
@@ -70,7 +70,7 @@ This not only clone repository but also install composer and if that repository 
 Just like git, you can clone repository to any directory, just give `--dir=` option for above command
 
 ```bash
-packer clone {repositoryname} --dir={custom_directory_name}
+packr clone {repositoryname} --dir={custom_directory_name}
 ```
 
 #### Specify branch to clone
@@ -78,8 +78,42 @@ packer clone {repositoryname} --dir={custom_directory_name}
 Just like git, you can clone any branch of given repository.
 
 ```bash
-packer clone {repositoryname} --branch={branch_name}
+packr clone {repositoryname} --branch={branch_name}
 ```
+
+## CRUD Generator
+
+With `packr crud` command you can create crud for laravel appication with fully green tests
+
+### step 1
+
+First we need to create a json structure for our migration of any model/table
+To do so run this command
+
+```bash
+packr crud:json {exactModelName}
+```
+
+### step 2
+
+Now you have json file, you can describe how your migration/schema is going to look.
+After giving all details you can now run command to actually create full crud for the model
+
+```bash
+packr crud:make {relativePathOfThatJsonFile}
+```
+
+Above command will create various files like
+
+- Model with relationships
+- Controller with all crud functions
+- Routes based on web or api file
+- factory
+- migration
+- unit test (if relationship is decribed in json)
+- Feature test for all crud part
+
+This not only clone repository but also install composer and if that repository type is project, then it will generate key for project also.
 
 ![clone](https://user-images.githubusercontent.com/41295276/46906649-7eec7c80-cf24-11e8-9f18-7dd7fbfe1695.gif)
 
