@@ -16,6 +16,7 @@
 Laravel Packer was created by, and is maintained by [Sarthak](https://github.com/sarthaksavvy), and it is a Command Line Tool which is going to help you in creating package.
 
 - Built on with [Laravel-zero](http://laravel-zero.com).
+- Detailed tutorials found on [Youtube playlist](https://www.youtube.com/playlist?list=PLe30vg_FG4OR9xvBpNW-SkK3T1IiLVM98)
 
 ## Installation
 
