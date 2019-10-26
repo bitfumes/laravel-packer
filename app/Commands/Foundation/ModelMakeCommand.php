@@ -28,7 +28,7 @@ class ModelMakeCommand extends ModelMake
         $content = $this->getComposer();
         $name    = Str::replaceFirst($this->rootNamespace(), '', $name);
         $path    = getcwd() . $this->devPath();
-        $path    = $content->type === 'project' ? $path . '/app/' : $path;
+        $path    = $content->type === 'project' ? $path . '/app/' : $path . '/src/';
         return  $path . str_replace('\\', '/', $name) . '.php';
     }
 }
