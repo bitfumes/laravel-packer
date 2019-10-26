@@ -18,6 +18,12 @@ Laravel Packer was created by, and is maintained by [Sarthak](https://github.com
 - Built on with [Laravel-zero](http://laravel-zero.com).
 - Detailed tutorials found on [Youtube playlist](https://www.youtube.com/playlist?list=PLe30vg_FG4OR9xvBpNW-SkK3T1IiLVM98)
 
+## Features
+
+- [All Artisan command while you create laravel package](#creating-new-package-scaffolding)
+- [Create CRUD for any model along with passing test cases ( feature and unit tests)](#crud-generator)
+- [Smart Clone - 4 steps in just 1 step](#smart-clone)
+
 ## Installation
 
 Install via composer.
@@ -82,6 +88,20 @@ Just like git, you can clone any branch of given repository.
 packr clone {repositoryname} --branch={branch_name}
 ```
 
+Above command will create various files like
+
+- Model with relationships
+- Controller with all crud functions
+- Routes based on web or api file
+- factory
+- migration
+- unit test (if relationship is decribed in json)
+- Feature test for all crud part
+
+This not only clone repository but also install composer and if that repository type is project, then it will generate key for project also.
+
+![clone](https://user-images.githubusercontent.com/41295276/46906649-7eec7c80-cf24-11e8-9f18-7dd7fbfe1695.gif)
+
 ## CRUD Generator
 
 With `packr crud` command you can create crud for laravel appication with fully green tests
@@ -103,20 +123,6 @@ After giving all details you can now run command to actually create full crud fo
 ```bash
 packr crud:make {relativePathOfThatJsonFile}
 ```
-
-Above command will create various files like
-
-- Model with relationships
-- Controller with all crud functions
-- Routes based on web or api file
-- factory
-- migration
-- unit test (if relationship is decribed in json)
-- Feature test for all crud part
-
-This not only clone repository but also install composer and if that repository type is project, then it will generate key for project also.
-
-![clone](https://user-images.githubusercontent.com/41295276/46906649-7eec7c80-cf24-11e8-9f18-7dd7fbfe1695.gif)
 
 ## License
 
