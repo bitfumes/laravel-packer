@@ -14,7 +14,7 @@ class DummyClass extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
+    protected $namespace = 'DummyNamespace\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
