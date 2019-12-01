@@ -2,6 +2,7 @@
 
 namespace App\Commands\Standalone;
 
+use Illuminate\Support\Str;
 use App\Commands\Helpers\MakeFile;
 
 class Facade extends MakeFile
@@ -27,7 +28,7 @@ class Facade extends MakeFile
 
     public function getFilename()
     {
-        return studly_case(cache()->get('package_name')) . 'Facade.php';
+        return Str::studly(cache()->get('package_name')) . 'Facade.php';
     }
 
     public function getPath()

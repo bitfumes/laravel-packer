@@ -28,7 +28,7 @@ trait PackageDetail
 
     protected function getPackageName()
     {
-        return str_replace('\\', '', str_after($this->namespaceFromComposer(), '\\'));
+        return str_replace('\\', '', Str::after($this->namespaceFromComposer(), '\\'));
     }
 
     /**
