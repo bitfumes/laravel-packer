@@ -2,8 +2,9 @@
 
 namespace App\Commands\Standalone;
 
-use LaravelZero\Framework\Commands\Command;
+use Illuminate\Support\Str;
 use App\Commands\Helpers\MakeFile;
+use LaravelZero\Framework\Commands\Command;
 
 class Config extends MakeFile
 {
@@ -28,7 +29,7 @@ class Config extends MakeFile
 
     public function getFilename()
     {
-        return studly_case(cache()->get('package_name')) . '.php';
+        return Str::studly(cache()->get('package_name')) . '.php';
     }
 
     public function getPath()

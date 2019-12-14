@@ -13,7 +13,7 @@ class BroadcastServiceProviderCommand extends ProviderMake
      *
      * @var string
      */
-    protected $name = 'make:broadcast-provider';
+    protected $name = 'make:provider:broadcast';
 
     /**
      * The description of the command.

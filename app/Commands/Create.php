@@ -2,8 +2,9 @@
 
 namespace App\Commands;
 
-use LaravelZero\Framework\Commands\Command;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
+use LaravelZero\Framework\Commands\Command;
 
 class Create extends Command
 {
@@ -111,7 +112,7 @@ class Create extends Command
                 $argument = $this->ask('Enter your vendor name');
             }
         }
-        Cache::forever('vendor', kebab_case($argument));
+        Cache::forever('vendor', Str::kebab($argument));
     }
 
     /**
@@ -133,7 +134,7 @@ class Create extends Command
     {
         $path         = $this->argument('path') ? $this->argument('path') : getcwd();
         $path         = app()->environment() == 'development' ? $path . '/package' : $path;
-        $package_name = studly_case(cache()->get('package_name'));
+        $package_name = Str::studly(cache()->get('package_name'));
         Cache::forever('package_path', "{$path}/{$package_name}");
     }
 
@@ -141,7 +142,7 @@ class Create extends Command
     {
         $path         = $this->argument('path') ? $this->argument('path') : getcwd();
         $path         = app()->environment() == 'development' ? $path . '/package' : $path;
-        $package_name = studly_case(cache()->get('package_name'));
+        $package_name = Str::studly(cache()->get('package_name'));
         chdir("{$path}/{$package_name}");
         $this->info(shell_exec('git init'));
     }

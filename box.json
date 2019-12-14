@@ -1,19 +1,11 @@
 {
-    "chmod": "0755",
-    "directories": [
-        "app",
-        "bootstrap",
-        "config",
-        "vendor",
-        "resources"
-    ],
-    "files": [
-        "composer.json"
-    ],
-    "exclude-composer-files": false,
-    "compression": "GZ",
-    "compactors": [
-        "Herrera\\Box\\Compactor\\Php",
-        "Herrera\\Box\\Compactor\\Json"
-    ]
+  "chmod": "0755",
+  "directories": ["app", "bootstrap", "config", "vendor"],
+  "files": ["composer.json"],
+  "exclude-composer-files": false,
+  "compression": "GZ",
+  "compactors": [
+    "KevinGH\\Box\\Compactor\\Php",
+    "KevinGH\\Box\\Compactor\\Json"
+  ]
 }

@@ -14,7 +14,7 @@ class EventServiceProviderCommand extends ProviderMake
      *
      * @var string
      */
-    protected $name = 'make:event-provider';
+    protected $name = 'make:provider:event';
 
     /**
      * The description of the command.

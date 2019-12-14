@@ -2,8 +2,9 @@
 
 namespace App\Commands\Helpers;
 
-use LaravelZero\Framework\Commands\Command;
+use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
+use LaravelZero\Framework\Commands\Command;
 
 abstract class MakeFile extends Command
 {
@@ -61,7 +62,7 @@ abstract class MakeFile extends Command
             $this->stringsToReplace(),
             $this->replaceContent(),
             $content
-            );
+        );
 
         return $content;
     }
@@ -77,7 +78,7 @@ abstract class MakeFile extends Command
             'KebabDummyPakageName',
             'DummyAuthorName',
             'DummyAuthorEmail',
-            'DummyFileName'
+            'DummyFileName',
         ];
     }
 
@@ -88,13 +89,13 @@ abstract class MakeFile extends Command
         return [
             strtolower($vendor),
             strtolower($packageName),
-            studly_case($vendor),
-            studly_case($packageName),
+            Str::studly($vendor),
+            Str::studly($packageName),
             $vendor,
-            kebab_case($packageName),
+            Str::kebab($packageName),
             cache()->get('author_name'),
             cache()->get('author_email'),
-            $this->hasArgument('filename') ? $this->argument('filename') : false
+            $this->hasArgument('filename') ? $this->argument('filename') : false,
         ];
     }
 }

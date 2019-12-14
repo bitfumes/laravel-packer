@@ -2,6 +2,7 @@
 
 namespace App\Commands\Standalone;
 
+use Illuminate\Support\Str;
 use App\Commands\Helpers\MakeFile;
 
 class ServiceProvider extends MakeFile
@@ -27,7 +28,7 @@ class ServiceProvider extends MakeFile
 
     public function getFilename()
     {
-        return studly_case(cache()->get('package_name')) . 'ServiceProvider.php';
+        return Str::studly(cache()->get('package_name')) . 'ServiceProvider.php';
     }
 
     public function getPath()

@@ -2,6 +2,7 @@
 
 namespace App\Commands\Crud;
 
+use Illuminate\Support\Str;
 use App\Commands\Helpers\PackageDetail;
 use Illuminate\Console\GeneratorCommand;
 
@@ -52,7 +53,7 @@ class AddRouteCommand extends GeneratorCommand
     {
         $model        = $this->argument('name');
         $resourceType = $this->option('api') == 'api' ? 'apiResource' : 'resource';
-        $routes       = "\nRoute::{$resourceType}('" . strToLower($model) . "','" . studly_case($model) . "Controller');";
+        $routes       = "\nRoute::{$resourceType}('" . strToLower($model) . "','" . Str::studly($model) . "Controller');";
         file_put_contents($path, $routes, FILE_APPEND);
     }
 
@@ -81,7 +82,7 @@ class AddRouteCommand extends GeneratorCommand
     {
         $routeLine = '';
         foreach ($provider as $line) {
-            if (str_contains($line, '$this->loadRoutesFrom')) {
+            if (Str::contains($line, '$this->loadRoutesFrom')) {
                 $routeLine = $line;
             }
         }

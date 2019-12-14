@@ -13,7 +13,7 @@ class RouteServiceProviderCommand extends ProviderMake
      *
      * @var string
      */
-    protected $name = 'make:route-provider';
+    protected $name = 'make:provider:route';
 
     /**
      * The description of the command.

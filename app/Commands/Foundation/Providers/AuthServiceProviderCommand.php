@@ -14,7 +14,7 @@ class AuthServiceProviderCommand extends ProviderMake
      *
      * @var string
      */
-    protected $name = 'make:auth-provider';
+    protected $name = 'make:provider:auth';
 
     /**
      * The description of the command.
