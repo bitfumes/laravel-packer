@@ -56,7 +56,7 @@ class StudlyDummyPackageNameServiceProvider extends ServiceProvider
     {
         // Register facade
         $this->app->singleton('LowerCaseDummyPackageName', function () {
-            return new StudlyDummyPackageName;
+            return new StudlyDummyPackageNameFacade;
         });
     }
 
