@@ -142,7 +142,7 @@ class ControllerMakeCommand extends GeneratorCommand
             'DummyFullModelClass'       => $modelClass,
             'DummyPackageName::'        => $this->replaceLayout(),
             'DummyModelClass'           => class_basename($modelClass),
-            'DummyModelVariable'        => lcfirst(class_basename($modelClass)),
+            'DummyModelVariable'        => strtolower(class_basename($modelClass)),
             'DummyModelPluralVariable'  => Str::plural(lcfirst(class_basename($modelClass))),
         ]);
     }

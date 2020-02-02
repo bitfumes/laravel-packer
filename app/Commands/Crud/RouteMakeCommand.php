@@ -50,7 +50,7 @@ class RouteMakeCommand extends GeneratorCommand
         $path = $this->argument('path');
         $name = $this->argument('name');
 
-        if (! is_dir($path)) {
+        if (!is_dir($path)) {
             mkdir($path, 0777, true);
         }
 
