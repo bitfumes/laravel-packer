@@ -103,7 +103,6 @@ class TestMakeCommand extends GeneratorCommand
                 'DummyFullModelClass',
                 'DummyModelFieldName',
                 'DummyPluralModelName',
-                'DummyPluralDatabaseName',
                 'NamespacedDummyUserModel',
                 '//Relationships',
             ],
