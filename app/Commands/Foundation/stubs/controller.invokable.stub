@@ -5,9 +5,14 @@ namespace DummyNamespace;
 use Illuminate\Http\Request;
 use DummyRootNamespaceHttp\Controllers\Controller;
 use Illuminate\Routing\Controller;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class DummyClass extends Controller
 {
+    use ValidatesRequests, AuthorizesRequests, DispatchesJobs;
+
     /**
      * Handle the incoming request.
      *
