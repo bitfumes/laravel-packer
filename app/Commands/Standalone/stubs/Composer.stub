@@ -3,6 +3,7 @@
     "description": "Your Package Description here",
     "type": "library",
     "license": "MIT",
+    "keywords": [DummyKeywords],
     "authors": [
         {
             "name": "DummyAuthorName",

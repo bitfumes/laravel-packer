@@ -70,6 +70,7 @@ class Create extends Command
         $this->setPackageName();
         $this->setAuthorName();
         $this->setAuthorEmail();
+        $this->setKeywords();
         $this->setPath();
     }
 
@@ -125,6 +126,18 @@ class Create extends Command
             $argument = $this->ask('Enter your package name');
         }
         Cache::forever('package_name', $argument);
+    }
+
+    /**
+     * Sets the keywords in the composer file.
+     */
+    protected function setKeywords()
+    {
+        $keywords = $this->ask('Enter keywords (comma separated)');
+        if ($keywords) {
+            $keywords = str_replace(', ', ',', $keywords);
+        }
+        Cache::forever('keywords', $keywords);
     }
 
     /**
