@@ -42,13 +42,13 @@ packr new your-package-name {vendor} {author} {author_email}
 
 ![new](https://user-images.githubusercontent.com/41295276/46673797-38331580-cbf8-11e8-88e6-5d6b0dc18b93.gif)
 
-With the above command it will create package scaffoldig for you.
+With the above command it will create package scaffolding for you.
 
 Optional fields like 'vendor', 'author' and 'author_email' can also be given via command line interface if you are not willing to provide on command.
 
 ## Same as Artisan commands
 
-With this CLI, you will have access to all artisan commands you are familier on Laravel.
+With this CLI, you will have access to all artisan commands you are familiar on Laravel.
 
 You can create controller just like you do with `php artisan`
 
@@ -95,7 +95,7 @@ Above command will create various files like
 - Routes based on web or api file
 - factory
 - migration
-- unit test (if relationship is decribed in json)
+- unit test (if relationship is described in json)
 - Feature test for all crud part
 
 This not only clone repository but also install composer and if that repository type is project, then it will generate key for project also.
