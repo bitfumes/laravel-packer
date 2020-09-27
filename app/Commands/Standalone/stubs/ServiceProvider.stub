@@ -15,7 +15,9 @@ class StudlyDummyPackageNameServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/StudlyDummyPackageName.php', 'LowerCaseDummyPackageName');
-        $this->publishThings();
+
+        $this->publishConfig();
+
         // $this->loadViewsFrom(__DIR__.'/resources/views', 'LowerCaseDummyPackageName');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->registerRoutes();
@@ -60,7 +62,13 @@ class StudlyDummyPackageNameServiceProvider extends ServiceProvider
         });
     }
 
-    public function publishThings(){
+    /**
+     * Publish Config
+     *
+     * @return void
+     */
+    public function publishConfig()
+    {
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/StudlyDummyPackageName.php' => config_path('StudlyDummyPackageName.php'),
