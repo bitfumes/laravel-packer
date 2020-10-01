@@ -5,6 +5,7 @@ namespace App\Commands\Crud;
 use Illuminate\Support\Str;
 use Illuminate\Support\Composer;
 use Illuminate\Database\Console\Migrations\BaseCommand;
+use Illuminate\Database\Console\Migrations\TableGuesser;
 
 class MigrateMakeCommand extends BaseCommand
 {
@@ -17,7 +18,8 @@ class MigrateMakeCommand extends BaseCommand
         {--create= : The table to be created}
         {--table= : The table to migrate}
         {--path= : The location where the migration file should be created}
-        {--realpath : Indicate any provided migration file paths are pre-resolved absolute paths}';
+        {--realpath : Indicate any provided migration file paths are pre-resolved absolute paths}
+        {--fullpath : Output the full path of the migration}';
 
     /**
      * The console command description.
@@ -43,7 +45,7 @@ class MigrateMakeCommand extends BaseCommand
     /**
      * Create a new migration install command instance.
      *
-     * @param  \Illuminate\Database\Migrations\MigrationCreator  $creator
+     * @param   \App\Commands\Crud\MigrationCreator  $creator
      * @param  \Illuminate\Support\Composer  $composer
      * @return void
      */
@@ -74,7 +76,7 @@ class MigrateMakeCommand extends BaseCommand
         // If no table was given as an option but a create option is given then we
         // will use the "create" option as the table name. This allows the devs
         // to pass a table name into this option as a short-cut for creating.
-        if (! $table && is_string($create)) {
+        if (!$table && is_string($create)) {
             $table = $create;
 
             $create = true;
@@ -83,7 +85,7 @@ class MigrateMakeCommand extends BaseCommand
         // Next, we will attempt to guess the table name if this the migration has
         // "create" in the name. This will allow us to provide a convenient way
         // of creating migrations that create new tables for the application.
-        if (! $table) {
+        if (!$table) {
             [$table, $create] = TableGuesser::guess($name);
         }
 
@@ -122,8 +124,8 @@ class MigrateMakeCommand extends BaseCommand
      */
     protected function getMigrationPath()
     {
-        if (! is_null($targetPath = $this->input->getOption('path'))) {
-            return ! $this->usingRealPath()
+        if (!is_null($targetPath = $this->input->getOption('path'))) {
+            return !$this->usingRealPath()
                 ? $this->laravel->basePath() . '/' . $targetPath
                 : $targetPath;
         }

@@ -2,10 +2,10 @@
 
 namespace App\Commands\Foundation\Factories;
 
+use Illuminate\Support\Str;
+use App\Commands\Helpers\PackageDetail;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
-use App\Commands\Helpers\PackageDetail;
-use Illuminate\Support\Str;
 
 class FactoryMakeCommand extends GeneratorCommand
 {
@@ -38,6 +38,9 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
+        if ($this->option('legacy')) {
+            return __DIR__ . '/stubs/factory_legacy.stub';
+        }
         return __DIR__ . '/stubs/factory.stub';
     }
 
@@ -49,13 +52,39 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     protected function buildClass($name)
     {
-        $model = $this->option('model')
+        $namespaceModel = $this->option('model')
                         ? $this->qualifyClass($this->option('model'))
                         : 'Model';
 
+        if ($this->option('legacy')) {
+            return str_replace(
+                'DummyModel',
+                $namespaceModel,
+                parent::buildClass($name)
+            );
+        }
+
+        $model = class_basename($namespaceModel);
+
+        if (Str::startsWith($namespaceModel, 'App\\Models')) {
+            $namespace = Str::beforeLast('Database\\Factories\\' . Str::after($namespaceModel, 'App\\Models\\'), '\\');
+        } else {
+            $namespace = 'Database\\Factories';
+        }
+
+        $replace = [
+            '{{ factoryNamespace }}' => $namespace,
+            'NamespacedDummyModel'   => $namespaceModel,
+            '{{ namespacedModel }}'  => $namespaceModel,
+            '{{namespacedModel}}'    => $namespaceModel,
+            'DummyModel'             => $model,
+            '{{ model }}'            => $model,
+            '{{model}}'              => $model,
+        ];
+
         return str_replace(
-            'DummyModel',
-            $model,
+            array_keys($replace),
+            array_values($replace),
             parent::buildClass($name)
         );
     }
@@ -82,6 +111,7 @@ class FactoryMakeCommand extends GeneratorCommand
     {
         return [
             ['model', 'm', InputOption::VALUE_OPTIONAL, 'The name of the model'],
+            ['legacy', 'l'],
         ];
     }
 }

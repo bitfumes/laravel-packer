@@ -9,6 +9,10 @@ class CrudMigrationCreator extends RealMigrationCreator
 {
     use PackageDetail;
 
+    public function __construct()
+    {
+    }
+
     /**
      * Get the full path to the migration.
      *
@@ -22,7 +26,7 @@ class CrudMigrationCreator extends RealMigrationCreator
         $path = $this->getComposer()->type === 'library' ? $path . 'src/' : $path;
         $path = $path . 'database/migrations';
 
-        if (! $this->files->isDirectory($path)) {
+        if (!$this->files->isDirectory($path)) {
             $this->files->makeDirectory($path, 0777, true);
         }
 
