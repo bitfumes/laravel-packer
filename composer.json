@@ -52,6 +52,6 @@
     ]
   },
   "bin": [
-    "application"
+    "builds/packr"
   ]
 }
