@@ -13,6 +13,6 @@ class StudlyDummyPackageNameFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'KebabDummyPakageName';
+        return 'KebabDummyPackageName';
     }
 }

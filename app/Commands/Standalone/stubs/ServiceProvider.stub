@@ -36,7 +36,7 @@ class StudlyDummyPackageNameServiceProvider extends ServiceProvider
     }
 
     /**
-    * Get the Blogg route group configuration array.
+    * Get route group configuration array.
     *
     * @return array
     */
