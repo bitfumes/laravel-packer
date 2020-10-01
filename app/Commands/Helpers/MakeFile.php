@@ -79,6 +79,7 @@ abstract class MakeFile extends Command
             'DummyAuthorName',
             'DummyAuthorEmail',
             'DummyFileName',
+            'DummyKeywords',
         ];
     }
 
@@ -86,6 +87,21 @@ abstract class MakeFile extends Command
     {
         $vendor      = cache()->get('vendor');
         $packageName = cache()->get('package_name');
+        $keywords = cache()->get('keywords');
+
+        if(!$keywords) $composerKeywords = '';
+        else {
+            $composerKeywords = PHP_EOL;
+            $keywords = explode(',', $keywords);
+            foreach ($keywords as $keyword) {
+                $composerKeywords .= "\t\t".'"' . $keyword .'",' . PHP_EOL;
+            }
+
+            $composerKeywords .= "\t"; //format keywords array
+
+            $composerKeywords = Str::replaceLast(',', '', $composerKeywords);
+        }
+
         return [
             strtolower($vendor),
             strtolower($packageName),
@@ -96,6 +112,7 @@ abstract class MakeFile extends Command
             cache()->get('author_name'),
             cache()->get('author_email'),
             $this->hasArgument('filename') ? $this->argument('filename') : false,
+            $composerKeywords,
         ];
     }
 }
