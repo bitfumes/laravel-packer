@@ -177,7 +177,7 @@ class ModelMakeCommand extends GeneratorCommand
     }
         ';
         }
-        return "{$fillable} 
+        return "{$fillable}
         {$rel}";
     }
 
