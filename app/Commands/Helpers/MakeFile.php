@@ -75,7 +75,7 @@ abstract class MakeFile extends Command
             'StudlyDummyVendor',
             'StudlyDummyPackageName',
             'KebabDummyVendor',
-            'KebabDummyPakageName',
+            'KebabDummyPackageName',
             'DummyAuthorName',
             'DummyAuthorEmail',
             'DummyFileName',
