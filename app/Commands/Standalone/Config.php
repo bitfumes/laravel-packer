@@ -29,7 +29,7 @@ class Config extends MakeFile
 
     public function getFilename()
     {
-        return Str::studly(cache()->get('package_name')) . '.php';
+        return Str::snake(cache()->get('package_name')) . '.php';
     }
 
     public function getPath()
