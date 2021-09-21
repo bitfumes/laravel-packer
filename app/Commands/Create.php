@@ -13,7 +13,7 @@ class Create extends Command
      *
      * @var string
      */
-    protected $signature = 'new {name?} {vendor?} {author_name?} {author_email?} {path?}';
+    protected $signature = 'new {name?} {vendor?} {author_name?} {author_email?} {keywords?} {path?} ';
 
     /**
      * The description of the command.
@@ -133,7 +133,11 @@ class Create extends Command
      */
     protected function setKeywords()
     {
-        $keywords = $this->ask('Enter keywords (comma separated)');
+        $keywords = $this->argument('keywords');
+        if (!$keywords) {
+            $keywords = $this->ask('Enter keywords (comma separated)');
+        }
+
         if ($keywords) {
             $keywords = str_replace(', ', ',', $keywords);
         }

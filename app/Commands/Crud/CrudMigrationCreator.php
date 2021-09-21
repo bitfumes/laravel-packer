@@ -2,6 +2,7 @@
 
 namespace App\Commands\Crud;
 
+use Illuminate\Filesystem\Filesystem;
 use App\Commands\Helpers\PackageDetail;
 use Illuminate\Database\Migrations\MigrationCreator as RealMigrationCreator;
 
@@ -9,8 +10,9 @@ class CrudMigrationCreator extends RealMigrationCreator
 {
     use PackageDetail;
 
-    public function __construct()
+    public function __construct(Filesystem $files)
     {
+        $this->files = $files;
     }
 
     /**

@@ -23,12 +23,12 @@ trait PackageDetail
 
     protected function getVendor()
     {
-        return str_before($this->namespaceFromComposer(), '\\');
+        return Str::before($this->namespaceFromComposer(), '\\');
     }
 
     protected function getPackageName()
     {
-        return str_replace('\\', '', Str::after($this->namespaceFromComposer(), '\\'));
+        return Str::replace('\\', '', Str::after($this->namespaceFromComposer(), '\\'));
     }
 
     /**

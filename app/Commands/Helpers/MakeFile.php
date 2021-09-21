@@ -87,14 +87,15 @@ abstract class MakeFile extends Command
     {
         $vendor      = cache()->get('vendor');
         $packageName = cache()->get('package_name');
-        $keywords = cache()->get('keywords');
+        $keywords    = cache()->get('keywords');
 
-        if(!$keywords) $composerKeywords = '';
-        else {
+        if (!$keywords) {
+            $composerKeywords = '';
+        } else {
             $composerKeywords = PHP_EOL;
-            $keywords = explode(',', $keywords);
+            $keywords         = explode(',', $keywords);
             foreach ($keywords as $keyword) {
-                $composerKeywords .= "\t\t".'"' . $keyword .'",' . PHP_EOL;
+                $composerKeywords .= "\t\t" . '"' . $keyword . '",' . PHP_EOL;
             }
 
             $composerKeywords .= "\t"; //format keywords array
