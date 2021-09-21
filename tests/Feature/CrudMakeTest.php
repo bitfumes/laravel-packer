@@ -18,7 +18,7 @@ class CrudMakeTest extends TestCase
     {
         parent::tearDown();
         $path  = base_path() . '/package';
-        // echo shell_exec("rm -r $path");
+        echo shell_exec("rm -r $path");
     }
 
     public function test_it_can_create_a_json_file_to_write_crud_structure()
