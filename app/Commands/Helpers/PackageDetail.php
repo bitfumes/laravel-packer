@@ -43,7 +43,7 @@ trait PackageDetail
 
     public function devPath()
     {
-        return (app()->environment() === 'development') ? '/package/' . $this->getPackageName() . '/' : '/';
+        return (app()->environment() === 'development') ? '/package/' . $this->getPackageName() . '/' : '';
     }
 
     public function getPath($name)

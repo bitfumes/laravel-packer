@@ -4,10 +4,16 @@ namespace App\Commands\Foundation\Migrations;
 
 use Illuminate\Database\Migrations\MigrationCreator as RealMigrationCreator;
 use App\Commands\Helpers\PackageDetail;
+use Illuminate\Filesystem\Filesystem;
 
 class MigrationCreator extends RealMigrationCreator
 {
     use PackageDetail;
+
+    public function __construct(Filesystem $files, $customStubPath = __DIR__.'/stubs')
+    {
+        parent::__construct($files, $customStubPath);
+    }
 
     /**
      * Get the full path to the migration.
