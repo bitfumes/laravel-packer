@@ -78,7 +78,7 @@ class CrudMakeCommand extends Command
     public function filePath()
     {
         $file      = $this->argument('file');
-        $file_path = $this->getPath("crud/$file") . '.json';
+        $file_path = $this->getPath("/crud/$file") . '.json';
         if (!file_exists($file_path)) {
             $this->error('File not found, please give relative path.');
             die();
