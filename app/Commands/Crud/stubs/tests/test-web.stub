@@ -12,7 +12,7 @@ class DummyClass extends TestCase
 
     public function create_DummyModelName($args = [], $num = null)
     {
-        return factory(DummyModelClass::class, $num)->create($args);
+        return DummyModelClass::factory()->count($num)->create($args);
     }
 
     /** @test */
@@ -35,7 +35,7 @@ class DummyClass extends TestCase
     /** @test */
     public function user_can_store_new_DummyModelName()
     {
-        $DummyModelName = factory(DummyModelClass::class)->make(['DummyModelFieldName'=>'Laravel']);
+        $DummyModelName = DummyModelClass::factory()->make(['DummyModelFieldName'=>'Laravel']);
         $this->post(route('DummyModelName.store'), $DummyModelName->toArray())
         ->assertRedirect(route('DummyModelName.index'))
         ->assertSessionHas(['message']);

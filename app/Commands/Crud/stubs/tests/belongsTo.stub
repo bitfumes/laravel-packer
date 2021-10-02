@@ -1,7 +1,7 @@
 /** @test */
 public function it_belongs_to_DummyRelationName()
 {
-    $DummyRelationName = factory(\DummyRootNamespaceDummyRelationModelName::class)->create();
-    $DummyModelName  = factory(\DummyRootNamespaceDummyModelName::class)->create(['DummyForeignKeyName' => DummyLocalKeyName]);
+    $DummyRelationName = \DummyRootNamespaceDummyRelationModelName::factory()->create();
+    $DummyModelName  = \DummyRootNamespaceDummyModelName::factory()->create(['DummyForeignKeyName' => DummyLocalKeyName]);
     $this->assertInstanceOf(\DummyRootNamespaceDummyRelationModelName::class, $DummyModelName->DummyRelationName);
 }
