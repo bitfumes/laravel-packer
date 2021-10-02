@@ -22,6 +22,11 @@ trait RefreshPacker
 
     public function isFileExists($filename)
     {
-        return $this->assertFileExists(base_path() . '/package/TestApp/' . $filename);
+        return $this->assertFileExists($this->_testPath() . $filename);
+    }
+
+    public function _testPath()
+    {
+        return base_path() . '/package/TestApp/';
     }
 }

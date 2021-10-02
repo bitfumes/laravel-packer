@@ -22,6 +22,7 @@ class CrudMakeTest extends TestCase
         Artisan::call('crud:make Test');
         $this->isFileExists('src/Test.php');
         $this->isFileExists('src/database/factories/TestFactory.php');
+        $this->assertEquals(1, count(glob($this->_testPath() . 'src/database/migrations/*_create_tests_table.php')));
         $this->isFileExists('src/Http/controllers/TestController.php');
         $this->isFileExists('tests/Feature/TestTest.php');
         $this->isFileExists('tests/Unit/TestTest.php');
