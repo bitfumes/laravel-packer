@@ -4,7 +4,6 @@ namespace App\Commands\Foundation\Migrations;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Composer;
-use Illuminate\Database\Migrations\MigrationCreator;
 use Illuminate\Database\Console\Migrations\BaseCommand;
 
 class MigrateMakeCommand extends BaseCommand
