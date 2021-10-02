@@ -71,7 +71,7 @@ class CrudMigrationCreator extends RealMigrationCreator
             $table->' . "{$field->type}('{$field->name}'$length){$index}{$def}{$nullable};";
             // $table->' . $field->type . '(\'' . $field->name . '\');';
         }
-        $to_replace   = '$table->bigIncrements(\'id\');';
+        $to_replace   = '$table->id();';
         $replace_with = $to_replace . $newLine;
         $result       = str_replace($to_replace, $replace_with, $stub);
         return $result;

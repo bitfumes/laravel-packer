@@ -15,8 +15,8 @@ class CrudMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'crud:make 
-    {file : Get structure of Model and model name as file name} 
+    protected $signature = 'crud:make
+    {file : Get structure of Model and model name as file name}
     {--model : Model name if you want to override json file name}';
 
     /**
@@ -78,8 +78,8 @@ class CrudMakeCommand extends Command
     public function filePath()
     {
         $file      = $this->argument('file');
-        $file_path = $this->getPath($file);
-        if (! file_exists($file_path)) {
+        $file_path = $this->getPath("crud/$file") . '.json';
+        if (!file_exists($file_path)) {
             $this->error('File not found, please give relative path.');
             die();
         }

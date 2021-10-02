@@ -40,7 +40,9 @@ class JsonMakeCommand extends MakeFile
 
     public function getFilename()
     {
-        return ucfirst($this->argument('model_name')) . '.json';
+        $name  = $this->argument('model_name');
+        $name  = explode('.', $name)[0];
+        return ucfirst($name) . '.json';
     }
 
     public function getPath()
