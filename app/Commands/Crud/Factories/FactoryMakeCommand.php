@@ -49,18 +49,34 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     protected function buildClass($name)
     {
-        $model = $this->option('model')
-            ? $this->qualifyClass($this->option('model'))
-            : 'Model';
+        $factory = class_basename(Str::ucfirst(str_replace('Factory', '', $name)));
 
-        $factory = parent::buildClass($name);
+        $namespaceModel = $this->option('model')
+                        ? $this->qualifyModel($this->option('model'))
+                        : $this->qualifyModel($this->guessModelName($name));
 
-        $factory = $this->addFakerData($factory);
+        $model = class_basename($namespaceModel);
+
+        if (Str::startsWith($namespaceModel, $this->rootNamespace() . 'Models')) {
+            $namespace = Str::beforeLast('Database\\Factories\\' . Str::after($namespaceModel, $this->rootNamespace() . 'Models\\'), '\\');
+        } else {
+            $namespace = $this->rootNamespace() . 'Database\\Factories';
+        }
+
+        $replace = [
+            '{{ factoryNamespace }}' => $namespace,
+            'NamespacedDummyModel'   => $namespaceModel,
+            '{{ namespacedModel }}'  => $namespaceModel,
+            '{{namespacedModel}}'    => $namespaceModel,
+            'DummyModel'             => $model,
+            '{{ model }}'            => $model,
+            '{{model}}'              => $model,
+        ];
 
         return str_replace(
-            'DummyModel',
-            $model,
-            $factory
+            array_keys($replace),
+            array_values($replace),
+            parent::buildClass($name)
         );
     }
 

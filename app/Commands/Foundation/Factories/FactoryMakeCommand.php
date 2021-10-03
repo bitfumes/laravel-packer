@@ -69,7 +69,7 @@ class FactoryMakeCommand extends GeneratorCommand
         if (Str::startsWith($namespaceModel, 'App\\Models')) {
             $namespace = Str::beforeLast('Database\\Factories\\' . Str::after($namespaceModel, 'App\\Models\\'), '\\');
         } else {
-            $namespace = 'Database\\Factories';
+            $namespace = $this->rootNamespace() . 'Database\\Factories';
         }
 
         $replace = [

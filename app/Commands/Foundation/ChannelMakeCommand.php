@@ -2,8 +2,8 @@
 
 namespace App\Commands\Foundation;
 
-use Illuminate\Foundation\Console\ChannelMakeCommand as ChannelMake;
 use App\Commands\Helpers\PackageDetail;
+use Illuminate\Foundation\Console\ChannelMakeCommand as ChannelMake;
 
 class ChannelMakeCommand extends ChannelMake
 {

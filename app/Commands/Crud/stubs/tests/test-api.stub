@@ -12,7 +12,7 @@ class DummyClass extends TestCase
 
     public function create_DummyModelName($args = [], $num = null)
     {
-        return DummyModelClass::factory(), $num)->create($args);
+        return DummyModelClass::factory()->count($num)->create($args);
     }
 
     /** @test */
