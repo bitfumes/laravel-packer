@@ -53,7 +53,7 @@ class AddRouteCommand extends GeneratorCommand
     {
         $model        = $this->argument('name');
         $resourceType = $this->option('api') == 'api' ? 'apiResource' : 'resource';
-        $routes       = "\nRoute::{$resourceType}('" . strToLower($model) . "','" . Str::studly($model) . "Controller');";
+        $routes       = "\nRoute::{$resourceType}('" . strToLower($model) . "','" . Str::studly($model) . 'Controller::class);';
         file_put_contents($path, $routes, FILE_APPEND);
     }
 

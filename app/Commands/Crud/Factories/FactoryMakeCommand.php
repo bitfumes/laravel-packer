@@ -49,6 +49,8 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     protected function buildClass($name)
     {
+        $this->addFakerData();
+
         $factory = class_basename(Str::ucfirst(str_replace('Factory', '', $name)));
 
         $namespaceModel = $this->option('model')
@@ -57,11 +59,7 @@ class FactoryMakeCommand extends GeneratorCommand
 
         $model = class_basename($namespaceModel);
 
-        if (Str::startsWith($namespaceModel, $this->rootNamespace() . 'Models')) {
-            $namespace = Str::beforeLast('Database\\Factories\\' . Str::after($namespaceModel, $this->rootNamespace() . 'Models\\'), '\\');
-        } else {
-            $namespace = $this->rootNamespace() . 'Database\\Factories';
-        }
+        $namespace = $this->rootNamespace() . 'Database\\Factories';
 
         $replace = [
             '{{ factoryNamespace }}' => $namespace,
@@ -71,6 +69,7 @@ class FactoryMakeCommand extends GeneratorCommand
             'DummyModel'             => $model,
             '{{ model }}'            => $model,
             '{{model}}'              => $model,
+            '//'                     => $this->addFakerData(),
         ];
 
         return str_replace(
@@ -106,7 +105,7 @@ class FactoryMakeCommand extends GeneratorCommand
         ];
     }
 
-    public function addFakerData($factory)
+    public function addFakerData()
     {
         $fields   = cache()->get('structure')->fields;
         $newLines = '';
@@ -114,12 +113,13 @@ class FactoryMakeCommand extends GeneratorCommand
             foreach ($this->fakerType() as $key => $value) {
                 // dump($field->type);
                 if ($key == $field->type) {
-                    $newLines .= "'$field->name'" . ' => $faker->' . $value . ',
+                    $newLines .= "'$field->name'" . ' => $this->faker->' . $value . ',
         ';
                 }
             }
         }
-        return str_replace('//', $newLines, $factory);
+
+        return $newLines;
     }
 
     protected function fakerType()

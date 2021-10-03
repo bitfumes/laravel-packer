@@ -75,6 +75,8 @@ class ModelMakeCommand extends GeneratorCommand
 
         $stub = $this->addMoreTo($stub);
 
+        $stub = $this->replaceModelNamespace($stub);
+
         return $this->replaceNamespace($stub, $name)->replaceClass($stub, $name);
     }
 
@@ -89,7 +91,7 @@ class ModelMakeCommand extends GeneratorCommand
 
         $this->call('crud:factory', [
             'name'    => "{$factory}Factory",
-            '--model' => $this->qualifyClass($this->getNameInput()),
+            '--model' => $this->qualifyModel($this->getNameInput()),
         ]);
     }
 
@@ -210,7 +212,28 @@ class ModelMakeCommand extends GeneratorCommand
         $content = $this->getComposer();
         $name    = Str::replaceFirst($this->rootNamespace(), '', $name);
         $path    = getcwd() . $this->devPath();
-        $path    = $content->type === 'project' ? $path . '/app/' : $path . '/src/';
+        $path    = $content->type === 'project' ? $path . '/app/Models/' : $path . '/src/Models/';
         return  $path . str_replace('\\', '/', $name) . '.php';
+    }
+
+    public function replaceModelNamespace($stub)
+    {
+        return str_replace('DummyNamespace', $this->rootNamespace() . 'Models', $stub);
+    }
+
+    protected function qualifyModel(string $model)
+    {
+        $model = ltrim($model, '\\/');
+
+        $model = str_replace('/', '\\', $model);
+
+        $rootNamespace = $this->rootNamespace();
+
+        if (Str::startsWith($model, $rootNamespace)) {
+            return $model;
+        }
+        return is_dir($this->projectPath() . 'Models')
+                    ? $rootNamespace . 'Models\\' . $model
+                    : $rootNamespace . $model;
     }
 }

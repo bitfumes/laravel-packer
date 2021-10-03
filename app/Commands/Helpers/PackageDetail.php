@@ -49,8 +49,12 @@ trait PackageDetail
     public function getPath($name)
     {
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
+        return $this->projectPath() . str_replace('\\', '/', $name) . '.php';
+    }
+
+    public function projectPath()
+    {
         $path = getcwd() . $this->devPath();
-        $path = $this->getComposer()->type !== 'project' ? $path . 'src/' : $path;
-        return $path . str_replace('\\', '/', $name) . '.php';
+        return $this->getComposer()->type !== 'project' ? $path . 'src/' : $path;
     }
 }

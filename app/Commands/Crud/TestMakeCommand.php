@@ -111,7 +111,7 @@ class TestMakeCommand extends GeneratorCommand
                 ucfirst($model),
                 $this->getNamespace($name),
                 $this->rootNamespace(),
-                $this->namespaceFromComposer() . '' . $model,
+                $this->namespaceFromComposer() . 'Models\\' . $model,
                 cache()->get('structure')->fields[0]->name,
                 Str::plural(Str::snake($model)),
                 $this->userProviderModel(),

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Crud;
 
 use Tests\TestCase;
 use Tests\RefreshPacker;
@@ -20,7 +20,7 @@ class CrudMakeTest extends TestCase
     {
         Artisan::call('crud:json Test');
         Artisan::call('crud:make Test');
-        $this->isFileExists('src/Test.php');
+        $this->isFileExists('src/Models/Test.php');
         $this->isFileExists('src/database/factories/TestFactory.php');
         $this->assertEquals(1, count(glob($this->_testPath() . 'src/database/migrations/*_create_tests_table.php')));
         $this->isFileExists('src/Http/controllers/TestController.php');
@@ -30,13 +30,14 @@ class CrudMakeTest extends TestCase
 
     public function test_it_create_class_based_factory()
     {
-        Artisan::call('crud:json Test');
-        Artisan::call('crud:make Test');
-        $this->isFileExists('src/database/factories/TestFactory.php');
-        $content = file_get_contents($this->_testPath() . 'src/database/factories/TestFactory.php');
-        $this->assertStringContainsString('protected $model = Test::class;', $content);
-        $this->assertStringContainsString('use Bitfumes\TestApp\Test;', $content);
+        Artisan::call('crud:json User');
+        Artisan::call('crud:make User');
+        $this->isFileExists('src/database/factories/UserFactory.php');
+        $content = file_get_contents($this->_testPath() . 'src/database/factories/UserFactory.php');
+        $this->assertStringContainsString('protected $model = User::class;', $content);
+        $this->assertStringContainsString('use Bitfumes\TestApp\Models\User;', $content);
         $this->assertStringContainsString('namespace Bitfumes\TestApp\Database\Factories;', $content);
+        $this->assertStringContainsString('\'title\' => $this->faker->word', $content);
     }
 
     public function test_it_create_tests_properly()
@@ -46,6 +47,25 @@ class CrudMakeTest extends TestCase
         $this->isFileExists('/tests/Feature/UserTest.php');
         $content = file_get_contents($this->_testPath() . '/tests/Feature/UserTest.php');
         $this->assertStringContainsString('class UserTest', $content);
+        $this->assertStringContainsString('use Bitfumes\TestApp\Models\User;', $content);
         $this->assertStringContainsString('User::factory()->count($num)->create($args);', $content);;
+    }
+
+    public function test_it_create_model_on_models_dir_with_correct_namespace()
+    {
+        Artisan::call('crud:json User');
+        Artisan::call('crud:make User');
+        $this->isFileExists('src/models/User.php');
+        $content = file_get_contents($this->_testPath() . 'src/models/User.php');
+        $this->assertStringContainsString('class User extends Model', $content);
+        $this->assertStringContainsString('namespace Bitfumes\TestApp\Models;', $content);
+    }
+
+    public function test_it_add_resource_route()
+    {
+        Artisan::call('crud:json User');
+        Artisan::call('crud:make User');
+        $content = file_get_contents($this->_testPath() . 'src/Http/routes.php');
+        $this->assertStringContainsString("Route::apiResource('user','UserController::class);", $content);
     }
 }

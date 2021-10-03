@@ -20,9 +20,18 @@ Laravel Packer was created by, and is maintained by [Sarthak](https://github.com
 
 ## Features
 
-- [All Artisan command while you create laravel package](#creating-new-package-scaffolding)
-- [Create CRUD for any model along with passing test cases ( feature and unit tests)](#crud-generator)
-- [Smart Clone - 4 steps in just 1 step](#smart-clone)
+- [Features](#features)
+- [Installation](#installation)
+- [Creating new Package Scaffolding](#creating-new-package-scaffolding)
+- [Same as Artisan commands](#same-as-artisan-commands)
+- [Smart Clone](#smart-clone)
+    - [Specify directory to clone](#specify-directory-to-clone)
+    - [Specify branch to clone](#specify-branch-to-clone)
+- [CRUD Generator](#crud-generator)
+  - [step 1](#step-1)
+  - [step 2](#step-2)
+  - [Todo](#todo)
+- [License](#license)
 
 ## Installation
 
@@ -123,6 +132,10 @@ After giving all details you can now run command to actually create full crud fo
 ```bash
 packr crud:make {relativePathOfThatJsonFile}
 ```
+
+### Todo
+- [ ] Add resource in controller for CRUD maker
+- [ ] Add form request in controller for CRUD maker
 
 ## License
 
