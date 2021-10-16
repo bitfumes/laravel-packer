@@ -34,6 +34,6 @@ class MigrationCreator extends RealMigrationCreator
             $this->files->makeDirectory($path, 0777, true);
         }
 
-        return $path . '/' . $this->getDatePrefix() . '_' . $name . '.php';
+        return str_replace('//', '/', $path) . '/' . $this->getDatePrefix() . '_' . $name . '.php';
     }
 }
