@@ -1,0 +1,17 @@
+on:
+  pull_request:
+name: Static Code Analysis
+jobs:
+  phplint:
+    name: "Laravel Pint (Style)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Laravel Pint"
+        uses: aglipanci/laravel-pint-action@0.1.0
+        with:
+          preset: laravel
+      - name: Commit changes to GitHub
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "PHP Style Change (Laravel Pint in CI)"
